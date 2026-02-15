@@ -13,6 +13,7 @@ public class CardView : MonoBehaviour, IPointerClickHandler
     public void Setup(Card card) {
         this.card = card;
         cardImage.sprite = card.Sprite;
+        Suit = card.Suit;
     }
 
     public void Setup(Card card, bool flipped) {
@@ -58,4 +59,6 @@ public class CardView : MonoBehaviour, IPointerClickHandler
     public Card getCard() {
         return this.card;
     }
+
+    public string Suit { get; private set; }
 }

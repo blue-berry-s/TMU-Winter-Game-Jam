@@ -37,7 +37,7 @@ public class BlackJackManager : MonoBehaviour
 
     private List<Card> DiscardedCards = new();
 
-    private DeckBuilderManager playerFullDeck;
+    private CardManager playerFullDeck;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -45,21 +45,7 @@ public class BlackJackManager : MonoBehaviour
 
         bettingManager = GameObject.FindGameObjectWithTag("GameLogic").GetComponent<BettingManager>();
 
-        GameObject existing = GameObject.FindGameObjectWithTag("PlayerDeck");
-
-        if (existing == null)
-        {
-            Debug.Log("Built new player Deck manager");
-
-            var gameO = new GameObject("PlayerDeck");
-            gameO.tag = "PlayerDeck";
-
-            playerFullDeck = gameO.AddComponent<DeckBuilderManager>();
-        }
-        else
-        {
-            playerFullDeck = existing.GetComponent<DeckBuilderManager>();
-        }
+        playerFullDeck = GameObject.FindGameObjectWithTag("SessionManagers").GetComponentInChildren<CardManager>();
 
         startButton.onClick.RemoveAllListeners();
         startButton.onClick.AddListener(startRound);
@@ -94,7 +80,6 @@ public class BlackJackManager : MonoBehaviour
     //Set up the cards
     public void addDeck() {
         if (playerFullDeck.deckEmpty()) {
-            playerFullDeck.setUp();
             playerFullDeck.setUpDeck();
         }
         List<Card> allCards = playerFullDeck.getPlayerCards();

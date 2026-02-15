@@ -5,7 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - GameLogic
-  - PlayerDeck
+  - SessionManagers
   layers:
   - Default
   - TransparentFX
