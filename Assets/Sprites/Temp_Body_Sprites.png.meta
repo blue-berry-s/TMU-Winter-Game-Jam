@@ -1,0 +1,921 @@
+fileFormatVersion: 2
+guid: c6875f1b95bc59d4a96552b67d0d9c40
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1856863662651214335
+    second: Temp_Body_Sprites_0
+  - first:
+      213: -6941741716902796993
+    second: Temp_Body_Sprites_1
+  - first:
+      213: 7724730330367849922
+    second: Temp_Body_Sprites_2
+  - first:
+      213: 3281813615996053619
+    second: Temp_Body_Sprites_3
+  - first:
+      213: -2738388528862289402
+    second: Temp_Body_Sprites_4
+  - first:
+      213: -6346436271965338361
+    second: Temp_Body_Sprites_5
+  - first:
+      213: 4186171679782820527
+    second: Temp_Body_Sprites_6
+  - first:
+      213: 4999257565903327714
+    second: Temp_Body_Sprites_7
+  - first:
+      213: -2769875574001673963
+    second: Temp_Body_Sprites_8
+  - first:
+      213: -4515783960972485272
+    second: Temp_Body_Sprites_9
+  - first:
+      213: -6721414068083590675
+    second: Temp_Body_Sprites_10
+  - first:
+      213: -32667460429161420
+    second: Temp_Body_Sprites_11
+  - first:
+      213: 6891873000038104897
+    second: Temp_Body_Sprites_12
+  - first:
+      213: -8152330175554490033
+    second: Temp_Body_Sprites_13
+  - first:
+      213: 936275334435484389
+    second: Temp_Body_Sprites_14
+  - first:
+      213: -1536767345153304811
+    second: Temp_Body_Sprites_15
+  - first:
+      213: 4872769227378907633
+    second: Temp_Body_Sprites_16
+  - first:
+      213: 681745560302657077
+    second: Temp_Body_Sprites_17
+  - first:
+      213: 2984688292087682610
+    second: Temp_Body_Sprites_18
+  - first:
+      213: 6480132757186900906
+    second: Temp_Body_Sprites_19
+  - first:
+      213: 4472934354819221673
+    second: Temp_Body_Sprites_20
+  - first:
+      213: -380996080942423040
+    second: Temp_Body_Sprites_21
+  - first:
+      213: -5761253384120730116
+    second: Temp_Body_Sprites_22
+  - first:
+      213: 7435978118567431029
+    second: Temp_Body_Sprites_23
+  - first:
+      213: 1628976083816829081
+    second: Temp_Body_Sprites_24
+  - first:
+      213: -8130283263931699208
+    second: Temp_Body_Sprites_25
+  - first:
+      213: -7827637490087609272
+    second: Temp_Body_Sprites_26
+  - first:
+      213: 3580240523893545543
+    second: Temp_Body_Sprites_27
+  - first:
+      213: 9076156826463275905
+    second: Temp_Body_Sprites_28
+  - first:
+      213: -5281432587148796969
+    second: Temp_Body_Sprites_29
+  - first:
+      213: -8332243809883882766
+    second: Temp_Body_Sprites_30
+  - first:
+      213: 571539362785329412
+    second: Temp_Body_Sprites_31
+  - first:
+      213: 6817001366791951481
+    second: Temp_Body_Sprites_32
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Temp_Body_Sprites_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 105
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 106f75f36581b36e0800000000000000
+      internalID: -1856863662651214335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Temp_Body_Sprites_1
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 105
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f31af79ffaaf9af90800000000000000
+      internalID: -6941741716902796993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Temp_Body_Sprites_2
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 105
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2c5f24fde41c33b60800000000000000
+      internalID: 7724730330367849922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Temp_Body_Sprites_3
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 105
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3782c7098185b8d20800000000000000
+      internalID: 3281813615996053619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Temp_Body_Sprites_4
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 105
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 602a820442a4ff9d0800000000000000
+      internalID: -2738388528862289402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Temp_Body_Sprites_5
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 105
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7050ad3e5ddece7a0800000000000000
+      internalID: -6346436271965338361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Temp_Body_Sprites_6
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 105
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: faa5146a6f4481a30800000000000000
+      internalID: 4186171679782820527
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Temp_Body_Sprites_7
+      rect:
+        serializedVersion: 2
+        x: 245
+        y: 105
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e11a5cd44ee06540800000000000000
+      internalID: 4999257565903327714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Temp_Body_Sprites_8
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 105
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 519599347dc6f89d0800000000000000
+      internalID: -2769875574001673963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Temp_Body_Sprites_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 70
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 86d14d3c966b451c0800000000000000
+      internalID: -4515783960972485272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Temp_Body_Sprites_10
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 70
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de97093448db8b2a0800000000000000
+      internalID: -6721414068083590675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Temp_Body_Sprites_11
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 70
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 43cd7692e11fb8ff0800000000000000
+      internalID: -32667460429161420
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Temp_Body_Sprites_12
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 70
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 14f70649af9d4af50800000000000000
+      internalID: 6891873000038104897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Temp_Body_Sprites_13
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 70
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f417062f5ea1dde80800000000000000
+      internalID: -8152330175554490033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Temp_Body_Sprites_14
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 70
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e2bcf0c4715efc00800000000000000
+      internalID: 936275334435484389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Temp_Body_Sprites_15
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 70
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51797b1ed3e4caae0800000000000000
+      internalID: -1536767345153304811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Temp_Body_Sprites_16
+      rect:
+        serializedVersion: 2
+        x: 245
+        y: 70
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f9df569bcd8f9340800000000000000
+      internalID: 4872769227378907633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Temp_Body_Sprites_17
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 70
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 53e1a0d99fb067900800000000000000
+      internalID: 681745560302657077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Temp_Body_Sprites_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 35
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2365727203ebb6920800000000000000
+      internalID: 2984688292087682610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Temp_Body_Sprites_19
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 35
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa37f71d86e0ee950800000000000000
+      internalID: 6480132757186900906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Temp_Body_Sprites_20
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 35
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a804aad81e031e30800000000000000
+      internalID: 4472934354819221673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Temp_Body_Sprites_21
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 35
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0046c9e351e66baf0800000000000000
+      internalID: -380996080942423040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Temp_Body_Sprites_22
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 35
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cfd7772529aeb00b0800000000000000
+      internalID: -5761253384120730116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Temp_Body_Sprites_23
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 35
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57b0aca83b6e13760800000000000000
+      internalID: 7435978118567431029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Temp_Body_Sprites_24
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 35
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 99052871e194b9610800000000000000
+      internalID: 1628976083816829081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Temp_Body_Sprites_25
+      rect:
+        serializedVersion: 2
+        x: 245
+        y: 35
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ff2c02927e6b2f80800000000000000
+      internalID: -8130283263931699208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Temp_Body_Sprites_26
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 35
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84c3cc4ec25ae5390800000000000000
+      internalID: -7827637490087609272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Temp_Body_Sprites_27
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74a122d99c19fa130800000000000000
+      internalID: 3580240523893545543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Temp_Body_Sprites_28
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 0
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 18b841fcb8cf4fd70800000000000000
+      internalID: 9076156826463275905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Temp_Body_Sprites_29
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 0
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7dbd2d15b0594b6b0800000000000000
+      internalID: -5281432587148796969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5903a1cd1ad963244a048f472e8b15ce
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":30.0,"y":30.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":5.0,"y":5.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      Temp_Body_Sprites_0: -1856863662651214335
+      Temp_Body_Sprites_1: -6941741716902796993
+      Temp_Body_Sprites_10: -6721414068083590675
+      Temp_Body_Sprites_11: -32667460429161420
+      Temp_Body_Sprites_12: 6891873000038104897
+      Temp_Body_Sprites_13: -8152330175554490033
+      Temp_Body_Sprites_14: 936275334435484389
+      Temp_Body_Sprites_15: -1536767345153304811
+      Temp_Body_Sprites_16: 4872769227378907633
+      Temp_Body_Sprites_17: 681745560302657077
+      Temp_Body_Sprites_18: 2984688292087682610
+      Temp_Body_Sprites_19: 6480132757186900906
+      Temp_Body_Sprites_2: 7724730330367849922
+      Temp_Body_Sprites_20: 4472934354819221673
+      Temp_Body_Sprites_21: -380996080942423040
+      Temp_Body_Sprites_22: -5761253384120730116
+      Temp_Body_Sprites_23: 7435978118567431029
+      Temp_Body_Sprites_24: 1628976083816829081
+      Temp_Body_Sprites_25: -8130283263931699208
+      Temp_Body_Sprites_26: -7827637490087609272
+      Temp_Body_Sprites_27: 3580240523893545543
+      Temp_Body_Sprites_28: 9076156826463275905
+      Temp_Body_Sprites_29: -5281432587148796969
+      Temp_Body_Sprites_3: 3281813615996053619
+      Temp_Body_Sprites_4: -2738388528862289402
+      Temp_Body_Sprites_5: -6346436271965338361
+      Temp_Body_Sprites_6: 4186171679782820527
+      Temp_Body_Sprites_7: 4999257565903327714
+      Temp_Body_Sprites_8: -2769875574001673963
+      Temp_Body_Sprites_9: -4515783960972485272
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
