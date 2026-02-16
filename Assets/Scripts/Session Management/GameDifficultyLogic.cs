@@ -2,20 +2,33 @@ using UnityEngine;
 
 public class GameDifficultyLogic : MonoBehaviour
 {
-    private int currentDebt;
+    public int currentDebt { get; private set; }
     private int currentLevel = 1;
 
-    [SerializeField] private int startingDebt = 10;
+    [SerializeField] private AnimationCurve DebtDifficulty;
 
-    [SerializeField] private int maxNumberRound = 5;
-    int currentRound = 1;
+    private void Start()
+    {
+        calcDifficulty();
+    }
 
     public void nextLevel() {
         currentLevel++;
 
     }
-    public void increaseDifficulty() { 
-        
+    public void calcDifficulty() {
+        currentDebt = Mathf.RoundToInt(DebtDifficulty.Evaluate(currentLevel));
     }
+
+    public int getDebt() {
+        calcDifficulty();
+        return currentDebt;
+    }
+
+    public int getCurrentLevel() {
+        return currentLevel;
+    }
+
+
 
 }

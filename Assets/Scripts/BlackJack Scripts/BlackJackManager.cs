@@ -36,6 +36,7 @@ public class BlackJackManager : MonoBehaviour
     private MoneyManager moneyManager;
     private HealthManager healthManager;
     private BlackJackUIManager uiManager;
+    private DebtManager debtManager;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -48,8 +49,10 @@ public class BlackJackManager : MonoBehaviour
         bettingManager = GameObject.FindGameObjectWithTag("BlackJackManagers").GetComponentInChildren<BettingManager>();
         cardVisualManager = GameObject.FindGameObjectWithTag("BlackJackManagers").GetComponentInChildren<CardsVisualManager>();
         uiManager = GameObject.FindGameObjectWithTag("BlackJackManagers").GetComponentInChildren<BlackJackUIManager>();
+        debtManager = GameObject.FindGameObjectWithTag("BlackJackManagers").GetComponentInChildren<DebtManager>();
 
-        uiManager.updateBothText();
+        uiManager.setDebtText();
+        uiManager.updateAllText();
 
         startButton.onClick.RemoveAllListeners();
         startButton.onClick.AddListener(startRound);
@@ -93,7 +96,8 @@ public class BlackJackManager : MonoBehaviour
         if (busted)
         {
             flipDealerCard();
-            compareValues();
+            StartCoroutine(compareValues());
+
         }
         else if (playerCards.Count == 3) {
             callPlayerStand();
@@ -163,14 +167,14 @@ public class BlackJackManager : MonoBehaviour
 
             if (busted || dealerValue == 21)
             {
-                compareValues();
+                StartCoroutine(compareValues());
                 yield break;
             }
 
             yield return new WaitForSeconds(1f);
         }
 
-        compareValues();
+        StartCoroutine(compareValues());
     }
 
     //This can probably become its own thing
@@ -181,7 +185,7 @@ public class BlackJackManager : MonoBehaviour
     }
 
 
-    public void compareValues()
+    IEnumerator compareValues()
     {
         int playerValue = calcValue(playerCards);
         int dealerValue = calcValue(dealerCards);
@@ -204,6 +208,10 @@ public class BlackJackManager : MonoBehaviour
         else {
             Debug.Log("It's a Tie");
         }
+
+        yield return new WaitForSeconds(1f);
+
+        debtManager.nextRound();
         disablePlayButtons();
         enableStartButton();
 
@@ -260,6 +268,7 @@ public class BlackJackManager : MonoBehaviour
         yield return StartCoroutine(cardVisualManager.DiscardDeckAnimation(dealerCards));
 
         addToDiscardPile();
+        uiManager.updateAllText();
 
 
     }
@@ -278,14 +287,14 @@ public class BlackJackManager : MonoBehaviour
 
     public void playerLost(string reason) {
         healthManager.decPlayerHealth(bettingManager.betHealth);
-        uiManager.updateBothText();
+        uiManager.updateAllText();
         Debug.Log("player Lost: " + reason);
     }
 
     public void playerWon(string reason)
     {
         moneyManager.incPlayerMoney(bettingManager.betAmount);
-        uiManager.updateBothText();
+        uiManager.updateAllText();
         Debug.Log("player Won: " + reason);
 
     }
@@ -320,4 +329,6 @@ public class BlackJackManager : MonoBehaviour
             ts[r] = tmp;
         }
     }
+
+    
 }
