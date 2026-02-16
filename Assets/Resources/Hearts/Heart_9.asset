@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CardData
   <Sprite>k__BackingField: {fileID: -4944937096215354853, guid: 1a85c22b40158a94a978659043ee11f7, type: 3}
   <Value>k__BackingField: 9
-  <Suit>k__BackingField: Hearts
+  <Suit>k__BackingField: Heart
   <SecondValue>k__BackingField: 9

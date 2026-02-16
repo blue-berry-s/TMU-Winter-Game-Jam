@@ -60,7 +60,14 @@ public class BodyPartManager : MonoBehaviour
 
     public void addBodyPart(BodyPart part) {
         playerBodyInventory.Add(part);
-   
+    }
+
+    public void increaseBodyPartValue(BodyPartData part, int amount) {
+        foreach (BodyPart p in playerBodyInventory) {
+            if (p.Name == part.Name) {
+                p.MoneyValue += amount;
+            }
+        }
     }
 
 

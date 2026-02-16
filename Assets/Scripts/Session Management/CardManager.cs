@@ -112,4 +112,57 @@ public class CardManager : MonoBehaviour
         return this.playerClubs;
     }
 
+    public Card getNewRandomClub() {
+        CardData data = clubsDatas[Random.Range(0, clubsDatas.Count)];
+        Card card = new(data);
+        return card;
+    }
+
+    public Card getNewRandomHeart()
+    {
+        CardData data = heartsDatas[Random.Range(0, heartsDatas.Count)];
+        Card card = new(data);
+        return card;
+    }
+
+    public Card getNewRandomDiamond()
+    {
+        CardData data = diamondsDatas[Random.Range(0, diamondsDatas.Count)];
+        Card card = new(data);
+        return card;
+    }
+
+    public Card getNewRandomSpade()
+    {
+        CardData data = spadesDatas[Random.Range(0, spadesDatas.Count)];
+        Card card = new(data);
+        return card;
+    }
+
+    public void deleteCard(CardData card) {
+        Debug.Log("DELETED CARD");
+    }
+
+    public void addCard(CardData data) {
+        Card card = new(data);
+        allPlayerCards.Add(card);
+        string suit = card.Suit;
+        switch (suit) {
+            case "Club":
+                playerClubs.Add(card);
+                break;
+            case "Diamond":
+                playerDiamonds.Add(card);
+                break;
+            case "Heart":
+                playerHearts.Add(card);
+                break;
+            case "Spade":
+                playerSpades.Add(card);
+                break;
+            default:
+                Debug.Log("SUIT NOT RECOGNIZED: " + suit);
+                break;
+        }
+    }
 }
