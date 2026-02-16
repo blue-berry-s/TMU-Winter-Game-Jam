@@ -40,6 +40,7 @@ public class BettingManager : MonoBehaviour
             currentPart.setUp(currentBodyParts[i]);
             allBodyParts.Add(currentPart);
             BetButtonLogic logic = newComp.GetComponentInChildren<BetButtonLogic>();
+            logic.setUp(currentPart);
             logic.unlockBetButton();
             allBetButtons.Add(logic);
 
@@ -81,10 +82,7 @@ public class BettingManager : MonoBehaviour
     public void disableAllButtons() {
         foreach (BetButtonLogic b in allBetButtons)
         {
-            if (!b.isBetted)
-            {
-                b.disableButton();
-            }
+            b.disableButton();
         }
     }
 

@@ -14,6 +14,19 @@ public class BetButtonLogic : MonoBehaviour
         isBetted = false;
     }
 
+    public void setUp(BodyPartView view)
+    {
+        TMP_Text[] texts= gameObject.GetComponent<RectTransform>().parent.GetComponentsInChildren<TMP_Text>();
+        if (texts.Length < 3) {
+            Debug.Log("ERROR SETTING UP TEXTS");
+            return;
+        }
+
+        texts[1].text = view.getHealth().ToString();
+        texts[2].text = view.getName();
+        texts[3].text = view.getMoney().ToString();
+    }
+
 
     public void betOrgan() {
         BodyPartView view = gameObject.GetComponent<RectTransform>().parent.GetComponentInChildren<BodyPartView>();

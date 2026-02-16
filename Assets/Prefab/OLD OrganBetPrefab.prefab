@@ -148,7 +148,7 @@ GameObject:
   - component: {fileID: 4085801933972471800}
   - component: {fileID: 838137181245950248}
   m_Layer: 5
-  m_Name: OrganBettingContainer
+  m_Name: OLD OrganBetPrefab
   m_TagString: BodyPart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
