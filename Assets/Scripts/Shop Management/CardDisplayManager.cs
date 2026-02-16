@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Splines;
 
-public class CardDisplayManage : MonoBehaviour
+public class CardDisplayManager : MonoBehaviour
 {
     [SerializeField] private SplineContainer heartsSpline;
     [SerializeField] private SplineContainer clubsSpline;

@@ -7,6 +7,7 @@ public class HealthManager : MonoBehaviour
     private int playerHealth;
     void Start()
     {
+
         playerHealth = maxPlayerHealth;
 
     }
@@ -28,6 +29,7 @@ public class HealthManager : MonoBehaviour
     {
         if (playerHealth - amount <= 0)
         {
+            switchToLost();
             Debug.Log("You DIED");
         }
         else
@@ -46,5 +48,16 @@ public class HealthManager : MonoBehaviour
 
     public void decPlayerMaxHealth(int amount) {
         maxPlayerHealth -= amount;
+    }
+
+    public void switchToLost()
+    {
+        SceneController.Instance
+            .newTransition()
+            .load(SceneDatabse.Slots.SessionContent, SceneDatabse.Scenes.BlackJack, setActive: false)
+            .load(SceneDatabse.Slots.SessionContent, SceneDatabse.Scenes.BadEnd, setActive: true)
+            .withOverlay()
+            .withClearUnusedAssets()
+            .Perform();
     }
 }

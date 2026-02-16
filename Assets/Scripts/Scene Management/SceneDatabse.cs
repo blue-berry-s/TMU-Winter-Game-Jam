@@ -13,6 +13,7 @@ public class SceneDatabse
         public const string Session = "Session";
         public const string Shop = "Shop";
         public const string BlackJack = "BlackJack";
+        public const string BadEnd = "BadEnd";
     }
    
 }

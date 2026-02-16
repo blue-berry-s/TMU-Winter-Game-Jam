@@ -48,6 +48,9 @@ public class CardManager : MonoBehaviour
     }
 
     public void setUpDeck() {
+        if (allPlayerCards.Count > 0) {
+            return;
+        }
         for (int i = 0; i < clubsDatas.Count; i++)
         {
             CardData data = clubsDatas[i];
