@@ -16,4 +16,4 @@ MonoBehaviour:
   icon: {fileID: -5680954219732530093, guid: e36cf56a1ffc9ed4d968dd37699b41b6, type: 3}
   price: 30
   effects:
-  - {fileID: 11400000, guid: 638185bfd0e79b647963c0c79142e4f2, type: 2}
+  - {fileID: 11400000, guid: beeaf4a63b002a24ba2ee3cf9f15c8cb, type: 2}

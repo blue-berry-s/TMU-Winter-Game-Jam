@@ -209,7 +209,7 @@ public class BlackJackManager : MonoBehaviour
             Debug.Log("It's a Tie");
         }
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
 
         debtManager.nextRound();
         disablePlayButtons();

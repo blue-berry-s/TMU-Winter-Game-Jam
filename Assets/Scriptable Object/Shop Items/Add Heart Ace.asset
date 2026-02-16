@@ -15,4 +15,5 @@ MonoBehaviour:
   itemName: Add Ace Hearts
   icon: {fileID: 4880691799782015441, guid: e36cf56a1ffc9ed4d968dd37699b41b6, type: 3}
   price: 5
-  effects: []
+  effects:
+  - {fileID: 11400000, guid: 5b708f0f9131e1f4b808ceab89e91a24, type: 2}
