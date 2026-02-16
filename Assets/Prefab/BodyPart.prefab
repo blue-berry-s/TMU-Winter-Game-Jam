@@ -85,9 +85,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8755922992130998976}
   - component: {fileID: 1932669924136160976}
+  - component: {fileID: 3678178482604092669}
   m_Layer: 5
   m_Name: BodyPart
-  m_TagString: Untagged
+  m_TagString: BodyPart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -124,3 +125,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a71ba705f61ad1418711147d4b503aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BodyPartView
+--- !u!114 &3678178482604092669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2668008971608660903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fa734f63e764b5489f4df39f7d4e9f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIHoverDetector

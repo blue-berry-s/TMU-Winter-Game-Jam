@@ -54,6 +54,7 @@ public class BetButtonLogic : MonoBehaviour
         thisButton.onClick.RemoveAllListeners();
         thisButton.onClick.AddListener(betOrgan);
         thisButton.GetComponentInChildren<TMP_Text>().text = "Bet";
+        thisButton.interactable = true;
         isBetted = false;
     }
 }

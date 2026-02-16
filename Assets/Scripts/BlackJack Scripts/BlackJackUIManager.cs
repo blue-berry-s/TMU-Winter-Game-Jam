@@ -22,4 +22,10 @@ public class BlackJackUIManager : MonoBehaviour
     {
         moneyText.text = moneyManager.getPlayerMoney().ToString();
     }
+
+    public void updateBothText() {
+        updateHealthUI();
+        updateMoneyUI();
+
+    }
 }

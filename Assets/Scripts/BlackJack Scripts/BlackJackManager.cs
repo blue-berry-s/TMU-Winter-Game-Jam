@@ -49,11 +49,13 @@ public class BlackJackManager : MonoBehaviour
         cardVisualManager = GameObject.FindGameObjectWithTag("BlackJackManagers").GetComponentInChildren<CardsVisualManager>();
         uiManager = GameObject.FindGameObjectWithTag("BlackJackManagers").GetComponentInChildren<BlackJackUIManager>();
 
+        uiManager.updateBothText();
 
         startButton.onClick.RemoveAllListeners();
         startButton.onClick.AddListener(startRound);
         disableStartButton();
         addPlayerDeckToRound();
+        disablePlayButtons();
     }
 
     private void Update()
@@ -202,6 +204,7 @@ public class BlackJackManager : MonoBehaviour
         else {
             Debug.Log("It's a Tie");
         }
+        disablePlayButtons();
         enableStartButton();
 
     }
@@ -275,12 +278,14 @@ public class BlackJackManager : MonoBehaviour
 
     public void playerLost(string reason) {
         healthManager.decPlayerHealth(bettingManager.betHealth);
+        uiManager.updateBothText();
         Debug.Log("player Lost: " + reason);
     }
 
     public void playerWon(string reason)
     {
         moneyManager.incPlayerMoney(bettingManager.betAmount);
+        uiManager.updateBothText();
         Debug.Log("player Won: " + reason);
 
     }

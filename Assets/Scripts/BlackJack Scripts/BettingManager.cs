@@ -88,15 +88,22 @@ public class BettingManager : MonoBehaviour
         }
     }
 
+
     public void resetBets() {
         bettedBodyParts = new();
         updateBetDisplays();
         //Clear out the body UI - might be useful once we implement destorying the organ when player looses it
-        while (bodyUI.childCount > 0)
+        // Switch out logic (I beleive BlackJackManager still stores old version of BetButtonLogic -> that needs to get refreshed
+        //while (bodyUI.childCount > 0)
+        //{
+        //DestroyImmediate(bodyUI.transform.GetChild(0).gameObject);
+        //}
+        //displayBodyParts();
+
+        foreach (BetButtonLogic b in allBetButtons)
         {
-            DestroyImmediate(bodyUI.transform.GetChild(0).gameObject);
+            b.unlockBetButton();
         }
-        displayBodyParts();
     }
 
     public void updateBetDisplays() {
