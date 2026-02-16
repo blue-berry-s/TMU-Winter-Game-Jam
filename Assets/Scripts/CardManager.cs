@@ -5,7 +5,7 @@ using System.Linq;
 
 public class CardManager : MonoBehaviour
 {
-
+    //need to revamp this - to maybe look for "deck" folders (and then create a sorting function/mapping? <-- probably don't need variables to store it)
     private List<CardData> clubsDatas = new();
     private List<CardData> heartsDatas = new();
     private List<CardData> diamondsDatas = new();

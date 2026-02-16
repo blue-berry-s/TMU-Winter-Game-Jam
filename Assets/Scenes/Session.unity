@@ -159,6 +159,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1300915713}
+  - component: {fileID: 1300915714}
   m_Layer: 0
   m_Name: HealthManager
   m_TagString: Untagged
@@ -181,6 +182,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1838824663}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1300915714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1300915712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bd99cd4bb8609d438a04ba2ea752797, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HealthManager
+  maxPlayerHealth: 30
 --- !u!1 &1405718393
 GameObject:
   m_ObjectHideFlags: 0
@@ -225,13 +239,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4b0fbe2c303a9c4ca893dc0ef8cf210, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DeckBuilderManager
-  maxPerSuit: 20
-  spawnPoint: {fileID: 0}
-  cardView: {fileID: 0}
-  heartsSpline: {fileID: 0}
-  clubsSpline: {fileID: 0}
-  diamondsSpline: {fileID: 0}
-  spadesSpline: {fileID: 0}
 --- !u!1 &1838824662
 GameObject:
   m_ObjectHideFlags: 0
@@ -277,6 +284,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1871279451}
+  - component: {fileID: 1871279452}
   m_Layer: 0
   m_Name: MoneyManager
   m_TagString: Untagged
@@ -299,6 +307,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1838824663}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1871279452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1871279450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a894c56a08ee03e41806c08468317873, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MoneyManager
+  playerMoney: 0
 --- !u!1 &2029094184
 GameObject:
   m_ObjectHideFlags: 0
@@ -308,6 +329,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2029094185}
+  - component: {fileID: 2029094186}
   m_Layer: 0
   m_Name: BodyPartManager
   m_TagString: Untagged
@@ -330,6 +352,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1838824663}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2029094186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2029094184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ef09e0ff0755694e8208c648d2de020, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BodyPartManager
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

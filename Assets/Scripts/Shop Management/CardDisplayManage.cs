@@ -27,10 +27,11 @@ public class CardDisplayManage : MonoBehaviour
     {
         cardmanager = GameObject.FindGameObjectWithTag("SessionManagers").GetComponentInChildren<CardManager>();
         cardmanager.setUpDeck();
+        StartCoroutine(showFullDeck());
     }
-    public void showFullDeck()
+    IEnumerator showFullDeck()
     {
-       
+        yield return new WaitForSeconds(0.5f);
         StartCoroutine(displayCards());
     }
 

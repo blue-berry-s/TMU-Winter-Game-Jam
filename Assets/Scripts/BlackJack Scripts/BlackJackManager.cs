@@ -1,235 +1,165 @@
-using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Splines;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Splines;
 
 public class BlackJackManager : MonoBehaviour
 {
-    [SerializeField] private CardView cardView;
-
+    // This is mostly to help with the animation of dealer cards (this should not be used in logic)
+    [SerializeField] int maxDealerHandSize = 10;
 
     private int maxPlayerHandSize = 3;
 
-    [SerializeField] private SplineContainer playerSplineContainer;
-    [SerializeField] private Transform spawnPoint;
-    [SerializeField] private Transform discardPoint;
-
-
-    private int maxDealerHandSize = 10;
-    [SerializeField] private SplineContainer dealerSplineContainer;
-
-
-    private List<Card> shuffledDeck = new();
+    // Pull all player cards from Card Manager - this now becomes the source of truth for cards
+    private List<Card> currentWaveDeck = new();
 
     //Connect to UI (should probably move to its own thing)
     [SerializeField] private Button standButton;
     [SerializeField] private Button hitButton;
     [SerializeField] private Button startButton;
 
+    [SerializeField] private SplineContainer dealerSplineContainer;
+    [SerializeField] private SplineContainer playerSplineContainer;
+
+
+
     private List<GameObject> playerCards = new();
     private List<GameObject> dealerCards = new();
-
-    private BettingManager bettingManager;
-
     private List<Card> DiscardedCards = new();
 
+    private CardsVisualManager cardVisualManager;
+    private BettingManager bettingManager;
     private CardManager playerFullDeck;
+    private MoneyManager moneyManager;
+    private HealthManager healthManager;
+    private BlackJackUIManager uiManager;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
 
-        bettingManager = GameObject.FindGameObjectWithTag("GameLogic").GetComponent<BettingManager>();
-
         playerFullDeck = GameObject.FindGameObjectWithTag("SessionManagers").GetComponentInChildren<CardManager>();
+        moneyManager = GameObject.FindGameObjectWithTag("SessionManagers").GetComponentInChildren<MoneyManager>();
+        healthManager = GameObject.FindGameObjectWithTag("SessionManagers").GetComponentInChildren<HealthManager>();
+
+        bettingManager = GameObject.FindGameObjectWithTag("BlackJackManagers").GetComponentInChildren<BettingManager>();
+        cardVisualManager = GameObject.FindGameObjectWithTag("BlackJackManagers").GetComponentInChildren<CardsVisualManager>();
+        uiManager = GameObject.FindGameObjectWithTag("BlackJackManagers").GetComponentInChildren<BlackJackUIManager>();
+
 
         startButton.onClick.RemoveAllListeners();
         startButton.onClick.AddListener(startRound);
         disableStartButton();
-        addDeck();
+        addPlayerDeckToRound();
     }
 
     private void Update()
     {
-        
-        if (bettingManager.hasBets() && playerCards.Count == 0)
+        bool betted = bettingManager.hasBets();
+        if (betted && playerCards.Count == 0)
         {
-            
             enableStartButton();
         }
-        else if (!bettingManager.hasBets() && playerCards.Count == 0)
-        {
-     
+        else if (!betted && playerCards.Count == 0) {
             disableStartButton();
         }
     }
 
-    public List<GameObject> getPlayerCards() {
-        return playerCards;
-    }
-
-    public List<GameObject> getDealerCards()
-    {
-        return dealerCards;
-    }
-
-    //Set up the cards
-    public void addDeck() {
+    //Set up the cards 
+    public void addPlayerDeckToRound() {
         if (playerFullDeck.deckEmpty()) {
             playerFullDeck.setUpDeck();
         }
         List<Card> allCards = playerFullDeck.getPlayerCards();
         for (int i = 0; i < allCards.Count; i++)
         {
-            shuffledDeck.Add(allCards[i]);
+            currentWaveDeck.Add(allCards[i]);
         }
 
-    }
-
-    public void shuffleDeck() {
-        if (shuffledDeck.Count < 3) {
-            List<Card> allCards = playerFullDeck.getPlayerCards();
-            for (int i = 0; i < allCards.Count; i++)
-            {
-                shuffledDeck.Add(allCards[i]);
-            }
-        }
     }
 
     public void PlayerDrawCard() {
+        Card card = DrawCard();
+        GameObject obj = cardVisualManager.spawnCard(false, card);
+        playerCards.Add(obj);
+        cardVisualManager.DrawCardAnimation(playerCards, maxPlayerHandSize, playerSplineContainer);
+
         bool busted = isBust(playerCards);
-        if (playerCards.Count < maxPlayerHandSize && shuffledDeck.Count > 0 && !(busted))
+        if (busted)
         {
-            playerCards.Add(drawCard().gameObject);
-            UpdateCardPositions(playerCards, maxPlayerHandSize, playerSplineContainer);
-            if (isBust(playerCards))
-            {
-                disablePlayButtons();
-                compareValues();
-            }
-            else if(playerCards.Count == maxPlayerHandSize)
-            {
-                StartCoroutine(playerStand());
-            }
-        }
-        else if (busted) {
-            disablePlayButtons();
+            flipDealerCard();
             compareValues();
         }
-        if (playerCards.Count == 2)
-        {
-            bettingManager.unlockBetting();
-        }
-        else {
-            bettingManager.lockCurrentBets();
+        else if (playerCards.Count == 3) {
+            callPlayerStand();
         }
     }
 
-    public void DealerDrawCard() {
-        bool busted = isBust(dealerCards);
-        if (dealerCards.Count < maxDealerHandSize && shuffledDeck.Count > 0 && !busted)
-        {
-            dealerCards.Add(drawCard().gameObject);
-            UpdateCardPositions(dealerCards, maxDealerHandSize, dealerSplineContainer);
-        }
-        else if (busted)
-        {
-            compareValues();
-        }
-        else {
-            Debug.Log("Over Count/ No More cards");
-        }
-        
+    public Card DrawCard() {
+        Card card = currentWaveDeck[Random.Range(0, currentWaveDeck.Count)];
+        currentWaveDeck.Remove(card);
+        return card;
+    }
+
+    public void DealerDrawCard(bool flipped) {
+        Card card = DrawCard();
+        GameObject obj = cardVisualManager.spawnCard(flipped, card);
+        dealerCards.Add(obj);
+        cardVisualManager.DrawCardAnimation(dealerCards, maxDealerHandSize, dealerSplineContainer);
     }
 
 
     private IEnumerator setUpDealer() {
-        DealerDrawCard();
+        DealerDrawCard(false);
         yield return new WaitForSeconds(0.15f);
-        GameObject card = drawCard(true).gameObject;
-        dealerCards.Add(card);
-        UpdateCardPositions(dealerCards, maxDealerHandSize, dealerSplineContainer);
-    }
-
-    public CardView drawCard(bool flipped) {
-        if (flipped)
-        {
-            Card drawnCard = shuffledDeck[Random.Range(0, shuffledDeck.Count)];
-            shuffledDeck.Remove(drawnCard);
-            CardView view = Instantiate(cardView, spawnPoint.position, spawnPoint.rotation);
-            view.Setup(drawnCard, flipped);
-            return view;
-        }
-        else {
-            return drawCard();
-        }
-    }
-
-    public CardView drawCard() {
-        Card drawnCard = shuffledDeck[Random.Range(0, shuffledDeck.Count)];
-        shuffledDeck.Remove(drawnCard);
-        CardView view = Instantiate(cardView, spawnPoint.position, spawnPoint.rotation);
-        view.Setup(drawnCard);
-        return view;
-    }
-
-    private void UpdateCardPositions(List<GameObject> handCardCount, int maxHandSize, SplineContainer splineContainer) {
-        if (handCardCount.Count == 0) return;
-        float cardSpacing = 1f / maxHandSize;
-        float firstCardPosition = 0.5f - (handCardCount.Count - 1) * cardSpacing / 2;
-        Spline spline = splineContainer.Spline;
-        for (int i = 0; i < handCardCount.Count; i++) {
-            float p = firstCardPosition + i * cardSpacing;
-            Vector3 splinePosition = spline.EvaluatePosition(p);
-            Vector3 forward = spline.EvaluateTangent(p);
-            Vector3 up = spline.EvaluateUpVector(p);
-            Quaternion rotation = Quaternion.LookRotation(up, Vector3.Cross(up, forward).normalized);
-            handCardCount[i].transform.DOMove(splinePosition, 0.25f);
-            handCardCount[i].transform.DOLocalRotateQuaternion(rotation, 0.25f);
-
-
-        }
+        DealerDrawCard(true);
     }
 
     public void startRound() {
+        //Handle UI Elements
         enablePlayButtons();
         disableStartButton();
+
+        //Game logic (player draws + dealer gets card)
         PlayerDrawCard();
         StartCoroutine(setUpDealer());
-        bettingManager.lockCurrentBets();
-        startButton.onClick.RemoveAllListeners();
-        startButton.onClick.AddListener(resetBoard);
-        startButton.GetComponentInChildren<TMP_Text>().text = "Next Round";
+        PlayerDrawCard();
 
+        bettingManager.lockBets();
+
+        //Handle Start Button UI
+        startButton.onClick.RemoveAllListeners();
+        startButton.onClick.AddListener(callResetBoard);
+        startButton.GetComponentInChildren<TMP_Text>().text = "Next Round";
     }
 
-
+    //This is needed because a button needs this (Buttons can't have IEnumerator)
     public void callPlayerStand() {
         StartCoroutine(playerStand());
     }
+
     private IEnumerator playerStand()
     {
         disablePlayButtons();
         disableStartButton();
-        bettingManager.lockCurrentBets();
+        bettingManager.disableAllButtons();
 
-        dealerCards[dealerCards.Count - 1].GetComponent<CardView>().flip();
+        flipDealerCard();
 
         int dealerValue = calcValue(dealerCards);
         int playerValue = calcValue(playerCards);
         bool busted = isBust(dealerCards);
 
-        while (dealerValue < 17 && !busted)
+        while (dealerValue < 17)
         {
-            DealerDrawCard();
+            DealerDrawCard(false);
             dealerValue = calcValue(dealerCards);
             busted = isBust(dealerCards);
 
-            if (busted || dealerValue > playerValue || dealerValue == 21)
+            if (busted || dealerValue == 21)
             {
                 compareValues();
                 yield break;
@@ -239,6 +169,13 @@ public class BlackJackManager : MonoBehaviour
         }
 
         compareValues();
+    }
+
+    //This can probably become its own thing
+    public void flipDealerCard()
+    {
+        // Once we add flipping aniamtion lets put this under cardVisualManger
+        dealerCards[dealerCards.Count - 1].GetComponent<CardView>().flip();
     }
 
 
@@ -302,50 +239,48 @@ public class BlackJackManager : MonoBehaviour
         return value > 21;
     }
 
+    //needed because it will be reference by buttons
+    public void callResetBoard() {
+        StartCoroutine(resetBoard());
+    }
 
-    public void resetBoard() {
+    public IEnumerator resetBoard() {
         disableStartButton();
-        bettingManager.clearBets();
+        bettingManager.resetBets();
+
         startButton.onClick.RemoveAllListeners();
         startButton.onClick.AddListener(startRound);
         startButton.GetComponentInChildren<TMP_Text>().text = "Start";
-        StartCoroutine(deleteCards(1f));
-        shuffleDeck();
+
+        // Complete the visuals
+        yield return StartCoroutine(cardVisualManager.DiscardDeckAnimation(playerCards));
+        yield return StartCoroutine(cardVisualManager.DiscardDeckAnimation(dealerCards));
+
+        addToDiscardPile();
+
+
     }
 
-    IEnumerator deleteCards(float time) {
-        StartCoroutine(discardCards(playerCards));
-
-        yield return new WaitForSeconds(0.3f);
-
-        StartCoroutine(discardCards(dealerCards));
-
-        yield return new WaitForSeconds(time);
-        for (int i = 0; i < dealerCards.Count; i++)
-        {
-            // Destory the game object from the scene
-            Destroy(dealerCards[i]);
+    private void addToDiscardPile() {
+        foreach (GameObject o in playerCards) {
+            DiscardedCards.Add(o.GetComponent<CardView>().getCard());
         }
-        for (int i = 0; i < playerCards.Count; i++)
-        {
-            // Destory the game object from the scene  
-            Destroy(playerCards[i]);
+
+        foreach (GameObject o in dealerCards) {
+            DiscardedCards.Add(o.GetComponent<CardView>().getCard());
         }
-        playerCards = new List<GameObject>();
-        dealerCards = new List<GameObject>();
- 
-
-
+        playerCards = new();
+        dealerCards = new();
     }
 
     public void playerLost(string reason) {
-        bettingManager.playerLost();
+        healthManager.decPlayerHealth(bettingManager.betHealth);
         Debug.Log("player Lost: " + reason);
     }
 
     public void playerWon(string reason)
     {
-        bettingManager.playerWon();
+        moneyManager.incPlayerMoney(bettingManager.betAmount);
         Debug.Log("player Won: " + reason);
 
     }
@@ -366,17 +301,6 @@ public class BlackJackManager : MonoBehaviour
 
     public void enableStartButton() {
         startButton.interactable = true;
-    }
-
-    IEnumerator discardCards(List<GameObject> handCardCount) {
-        for (int i = 0; i < handCardCount.Count; i++)
-        {
-            DiscardedCards.Add(handCardCount[i].GetComponent<CardView>().getCard());
-            handCardCount[i].transform.DOMove(discardPoint.position, 0.2f);
-            handCardCount[i].transform.DOLocalRotateQuaternion(discardPoint.rotation, 0.2f);
-            yield return new WaitForSeconds(0.1f);
-
-        }
     }
 
     public void Shuffle<T>(List<T> ts)
