@@ -88,6 +88,11 @@ public class BettingManager : MonoBehaviour
         }
     }
 
+    public void doubleBets() {
+        betAmount = betAmount * 2;
+        updateBetDisplays();
+    }
+
 
     public void resetBets() {
         bettedBodyParts = new();
