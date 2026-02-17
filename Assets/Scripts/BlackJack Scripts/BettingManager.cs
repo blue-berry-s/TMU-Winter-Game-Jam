@@ -11,6 +11,7 @@ public class BettingManager : MonoBehaviour
     [SerializeField] private Transform bodyUI;
 
     public int betAmount { get; private set; }
+    private int betAmountPrev;
     public int betHealth { get; private set; }
     [SerializeField] private TMP_Text betText;
     [SerializeField] private TMP_Text healthText;
@@ -20,14 +21,20 @@ public class BettingManager : MonoBehaviour
     [SerializeField] private BodyPartView bodyView;
     [SerializeField] private GameObject bettingButton;
     private List<BetButtonLogic> allBetButtons = new();
+    private SideMenu betMenu;
+
+    public int betTimes { get; private set; }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         playerBodyInventory = GameObject.FindGameObjectWithTag("SessionManagers").GetComponentInChildren<BodyPartManager>();
+        betMenu = GameObject.FindGameObjectWithTag("BlackJackManagers").GetComponentInChildren<SideMenu>();
+
         displayBodyParts();
         betAmount = 0;
         betHealth = 0;
+        betTimes = 0;
 
     }
 
@@ -61,15 +68,24 @@ public class BettingManager : MonoBehaviour
     }
 
     public void lockBets() {
-        foreach (BetButtonLogic b in allBetButtons) {
-            if (b.isBetted)
+        if (hasBets() && betAmount > betAmountPrev) {
+            betTimes++;
+            betMenu.callCloseMenu();
+            foreach (BetButtonLogic b in allBetButtons)
             {
-                b.lockBetButton();
+                if (b.isBetted)
+                {
+                    b.lockBetButton();
+                }
             }
+            betAmountPrev = betAmount;
         }
+        
+
     }
 
     public void unlockBets() {
+        betMenu.callOpenMenu();
         foreach (BetButtonLogic b in allBetButtons)
         {
             if (!b.isBetted)
@@ -84,11 +100,6 @@ public class BettingManager : MonoBehaviour
         {
             b.disableButton();
         }
-    }
-
-    public void doubleBets() {
-        betAmount = betAmount * 2;
-        updateBetDisplays();
     }
 
 
@@ -107,6 +118,8 @@ public class BettingManager : MonoBehaviour
         {
             b.unlockBetButton();
         }
+        clearBetTimes();
+        betAmountPrev = 0;
     }
 
     public void updateBetDisplays() {
@@ -126,6 +139,10 @@ public class BettingManager : MonoBehaviour
 
     public bool hasBets() {
         return bettedBodyParts.Count > 0;
+    }
+
+    public void clearBetTimes() {
+        betTimes = 0;
     }
 
     private int calcBetHealth()

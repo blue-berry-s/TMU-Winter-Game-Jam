@@ -40,4 +40,5 @@ public class BlackJackUIManager : MonoBehaviour
     public void setDebtText() {
         debtText.text = "DEBT: $" + debtManager.getCurrentDebt().ToString();
     }
+
 }

@@ -54,6 +54,7 @@ public class BlackJackManager : MonoBehaviour
 
         uiManager.setDebtText();
         uiManager.updateAllText();
+        bettingManager.unlockBets();
 
         startButton.onClick.RemoveAllListeners();
         startButton.onClick.AddListener(startRound);
@@ -69,8 +70,21 @@ public class BlackJackManager : MonoBehaviour
         {
             enableStartButton();
         }
-        else if (!betted && playerCards.Count == 0) {
+        else if (!betted && playerCards.Count == 0)
+        {
             disableStartButton();
+        }
+        else if (bettingManager.betTimes == 2) {
+            bettingManager.clearBetTimes();
+            PlayerDrawCard();
+            if (isBust(playerCards))
+            {
+                flipDealerCard();
+                compareValues();
+            }
+            else {
+                callPlayerStand();
+            }
         }
     }
 
@@ -133,8 +147,6 @@ public class BlackJackManager : MonoBehaviour
         StartCoroutine(setUpDealer());
         PlayerDrawCard();
 
-        bettingManager.lockBets();
-
         //Handle Start Button UI
         startButton.onClick.RemoveAllListeners();
         startButton.onClick.AddListener(callResetBoard);
@@ -177,17 +189,10 @@ public class BlackJackManager : MonoBehaviour
     }
 
     public void playerDoubleDown() {
-        PlayerDrawCard();
-        if (isBust(playerCards))
-        {
-            flipDealerCard();
-            StartCoroutine(compareValues());
-        }
-        else {
-            callPlayerStand();
-        }
-        
+        bettingManager.unlockBets();
     }
+
+
 
     //This can probably become its own thing
     public void flipDealerCard()
@@ -281,6 +286,7 @@ public class BlackJackManager : MonoBehaviour
 
         addToDiscardPile();
         uiManager.updateAllText();
+        bettingManager.unlockBets();
 
 
     }
