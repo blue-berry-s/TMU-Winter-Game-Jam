@@ -11,7 +11,7 @@ public class BlackJackManager : MonoBehaviour
     // This is mostly to help with the animation of dealer cards (this should not be used in logic)
     [SerializeField] int maxDealerHandSize = 10;
 
-    private int maxPlayerHandSize = 3;
+    private int maxPlayerHandSize = 10;
 
     // Pull all player cards from Card Manager - this now becomes the source of truth for cards
     private List<Card> currentWaveDeck = new();
@@ -20,6 +20,7 @@ public class BlackJackManager : MonoBehaviour
     [SerializeField] private Button standButton;
     [SerializeField] private Button hitButton;
     [SerializeField] private Button startButton;
+    [SerializeField] private Button doubleDownButton;
 
     [SerializeField] private SplineContainer dealerSplineContainer;
     [SerializeField] private SplineContainer playerSplineContainer;
@@ -99,9 +100,6 @@ public class BlackJackManager : MonoBehaviour
             StartCoroutine(compareValues());
 
         }
-        else if (playerCards.Count == 3) {
-            callPlayerStand();
-        }
     }
 
     public Card DrawCard() {
@@ -109,6 +107,7 @@ public class BlackJackManager : MonoBehaviour
         currentWaveDeck.Remove(card);
         return card;
     }
+
 
     public void DealerDrawCard(bool flipped) {
         Card card = DrawCard();
@@ -175,6 +174,19 @@ public class BlackJackManager : MonoBehaviour
         }
 
         StartCoroutine(compareValues());
+    }
+
+    public void playerDoubleDown() {
+        PlayerDrawCard();
+        if (isBust(playerCards))
+        {
+            flipDealerCard();
+            StartCoroutine(compareValues());
+        }
+        else {
+            callPlayerStand();
+        }
+        
     }
 
     //This can probably become its own thing
@@ -302,11 +314,13 @@ public class BlackJackManager : MonoBehaviour
     public void disablePlayButtons() {
         standButton.interactable = false;
         hitButton.interactable = false;
+        doubleDownButton.interactable = false;
     }
 
     public void enablePlayButtons() {
         standButton.interactable = true;
         hitButton.interactable = true;
+        doubleDownButton.interactable = true;
     }
 
     public void disableStartButton() {
