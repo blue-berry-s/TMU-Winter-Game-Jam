@@ -223,7 +223,7 @@ public class BlackJackManager : MonoBehaviour
             playerWon("More than dealer");
         }
         else {
-            Debug.Log("It's a Tie");
+            uiManager.updateRoundText("It's a Tie");
         }
 
         yield return new WaitForSeconds(0.5f);
@@ -273,6 +273,7 @@ public class BlackJackManager : MonoBehaviour
     }
 
     public IEnumerator resetBoard() {
+        uiManager.hideRoundText();
         disableStartButton();
         bettingManager.resetBets();
 
@@ -294,10 +295,12 @@ public class BlackJackManager : MonoBehaviour
     private void addToDiscardPile() {
         foreach (GameObject o in playerCards) {
             DiscardedCards.Add(o.GetComponent<CardView>().getCard());
+            Destroy(o);
         }
 
         foreach (GameObject o in dealerCards) {
             DiscardedCards.Add(o.GetComponent<CardView>().getCard());
+            Destroy(o);
         }
         playerCards = new();
         dealerCards = new();
@@ -306,14 +309,14 @@ public class BlackJackManager : MonoBehaviour
     public void playerLost(string reason) {
         healthManager.decPlayerHealth(bettingManager.betHealth);
         uiManager.updateAllText();
-        Debug.Log("player Lost: " + reason);
+        uiManager.updateRoundText("player Lost: " + reason);
     }
 
     public void playerWon(string reason)
     {
         moneyManager.incPlayerMoney(bettingManager.betAmount);
         uiManager.updateAllText();
-        Debug.Log("player Won: " + reason);
+        uiManager.updateRoundText("player Won: " + reason);
 
     }
 
@@ -337,17 +340,13 @@ public class BlackJackManager : MonoBehaviour
         startButton.interactable = true;
     }
 
-    public void Shuffle<T>(List<T> ts)
-    {
-        var count = ts.Count;
-        var last = count - 1;
-        for (var i = 0; i < last; ++i)
-        {
-            var r = UnityEngine.Random.Range(i, count);
-            var tmp = ts[i];
-            ts[i] = ts[r];
-            ts[r] = tmp;
-        }
+
+    public List<Card> getCurrentDeck() {
+        return currentWaveDeck;
+    }
+
+    public List<Card> getDiscardDeck() {
+        return DiscardedCards;
     }
 
     
