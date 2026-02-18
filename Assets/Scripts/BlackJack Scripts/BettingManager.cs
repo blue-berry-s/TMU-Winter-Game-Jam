@@ -152,6 +152,8 @@ public class BettingManager : MonoBehaviour
         betHealth = calcBetHealth();
         betText.text = "$" + betAmount.ToString();
         healthText.text = betHealth.ToString();
+
+        
     }
 
     private int calcBetAmount() {

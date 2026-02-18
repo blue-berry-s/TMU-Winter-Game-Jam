@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 309a62c172f85294885b95da8aec462d, type: 3}
   m_Name: 10. Spine
   m_EditorClassIdentifier: Assembly-CSharp::BodyPartData
-  <Name>k__BackingField: Finger
+  <Name>k__BackingField: Spine
   <MoneyValue>k__BackingField: 10
   <HealthCost>k__BackingField: 5
   <Amount>k__BackingField: 10
