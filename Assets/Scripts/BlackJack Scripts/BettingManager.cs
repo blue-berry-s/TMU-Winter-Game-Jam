@@ -71,7 +71,7 @@ public class BettingManager : MonoBehaviour
 
     public void lockBets() {
         //Can't bet over your current health / can't bet all your organs (or else will reach lock state when doubling down)
-        if ((betAmountPrev == 0) && hasBets() && (betHealth >= healthManager.getMaxHealth())) {
+        if ((betAmountPrev == 0) && hasBets() && (betHealth > healthManager.getMaxHealth())) {
             setErrorMessage("Can't Bet over Max Health on first bet");
             return;
         }
