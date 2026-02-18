@@ -127,17 +127,17 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 31
+        width: 30
         height: 30
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 35c06937c323921b0800000000000000
+      spriteID: d2839e9ad95d9f6408c0cf5ce07944cd
       internalID: -5680954219732530093
       vertices: []
       indices: 
@@ -147,19 +147,19 @@ TextureImporter:
       name: Temp_Shop_Sprites_1
       rect:
         serializedVersion: 2
-        x: 34
+        x: 35
         y: 0
-        width: 32
+        width: 30
         height: 30
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 90ecb92588f0e3dc0800000000000000
+      spriteID: 671a73e8466ab68428b76066dc7fd164
       internalID: -3657468769202352631
       vertices: []
       indices: 
@@ -169,19 +169,19 @@ TextureImporter:
       name: Temp_Shop_Sprites_2
       rect:
         serializedVersion: 2
-        x: 69
+        x: 70
         y: 0
-        width: 32
+        width: 30
         height: 30
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 1d14b283553bbb340800000000000000
+      spriteID: 6cf8d0641524dff4dbf1f9ab2f2ef66d
       internalID: 4880691799782015441
       vertices: []
       indices: 
@@ -191,20 +191,64 @@ TextureImporter:
       name: Temp_Shop_Sprites_3
       rect:
         serializedVersion: 2
-        x: 104
+        x: 105
         y: 0
-        width: 31
+        width: 30
         height: 30
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 3c5f309a0ed7c1d00800000000000000
+      spriteID: c8872ea12f5fef94fa8d0e23316f9f6b
       internalID: 944768425702716867
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Temp_Shop_Sprites_4
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 0
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05e9c34bb303f0c47b6c26d8eb69f270
+      internalID: -1787711098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Temp_Shop_Sprites_5
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 0
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5d2178e9afae5845a33ac5bde53ae6c
+      internalID: -410955009
       vertices: []
       indices: 
       edges: []
@@ -213,7 +257,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 2dd55956476b64e4ea7a6a619fae031e
     internalID: 0
     vertices: []
     indices: 
@@ -221,12 +265,16 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":30.0,"y":30.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":5.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       Temp_Shop_Sprites_0: -5680954219732530093
       Temp_Shop_Sprites_1: -3657468769202352631
       Temp_Shop_Sprites_2: 4880691799782015441
       Temp_Shop_Sprites_3: 944768425702716867
+      Temp_Shop_Sprites_4: -1787711098
+      Temp_Shop_Sprites_5: -410955009
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

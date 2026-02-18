@@ -1,16 +1,34 @@
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Shop/Effects/Heal Player")]
-public class HealEffect : ShopItemEffect
+public class HealEffect : ShopItem
 {
-    public int amount;
+    private int amount;
+    private HealthManager healthManager;
+    private int minPrice;
+    private int priceCheck;
 
-    public override void Apply(GameObject managerObjects)
+    public override void Setup()
     {
-        
-        HealthManager healthManager = managerObjects.GetComponentInChildren<HealthManager>();
-        Debug.Log("Health Before: " + healthManager.getPlayerHealth());
+        healthManager = getManager().GetComponentInChildren<HealthManager>();
+        MoneyManager moneyManager = getManager().GetComponentInChildren<MoneyManager>();
+        float percentage = Random.Range(0.1f, 0.5f);
+        priceCheck = Mathf.RoundToInt(percentage* moneyManager.getPlayerMoney());
+        amount = Mathf.RoundToInt(percentage*healthManager.getMaxHealth());
+
+    }
+    public override void Apply()
+    {
         healthManager.incPlayerHealth(amount);
-        Debug.Log("Health After: " + healthManager.getPlayerHealth());
+    }
+
+    public override int getPrice()
+    {
+        return Mathf.Max(10, priceCheck);
+    }
+
+    public override string getName()
+    {
+        return "Heal " + amount.ToString();
     }
 }

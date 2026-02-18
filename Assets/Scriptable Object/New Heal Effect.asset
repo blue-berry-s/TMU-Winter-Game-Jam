@@ -9,11 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40858aeee7314fe46ae1c9e4fba10afd, type: 3}
-  m_Name: Add Health 10
-  m_EditorClassIdentifier: Assembly-CSharp::ShopItem
-  itemName: Health 10
+  m_Script: {fileID: 11500000, guid: 84ddcfa7f93cdf74884b81ad2bbf0b70, type: 3}
+  m_Name: New Heal Effect
+  m_EditorClassIdentifier: Assembly-CSharp::HealEffect
+  itemName: 
   icon: {fileID: -5680954219732530093, guid: e36cf56a1ffc9ed4d968dd37699b41b6, type: 3}
-  price: 30
-  effects:
-  - {fileID: 11400000, guid: beeaf4a63b002a24ba2ee3cf9f15c8cb, type: 2}
+  price: 0
+  forInventory: 0

@@ -130,6 +130,11 @@ public class BlackJackManager : MonoBehaviour
         cardVisualManager.DrawCardAnimation(dealerCards, maxDealerHandSize, dealerSplineContainer);
     }
 
+    public void discardPlayerCard() {
+        DiscardedCards.Add(playerCards[playerCards.Count - 1].GetComponent<CardView>().getCard());
+        cardVisualManager.DiscardCardAnimation(playerCards[playerCards.Count - 1], 0.25f);
+    }
+
 
     private IEnumerator setUpDealer() {
         DealerDrawCard(false);
@@ -307,6 +312,9 @@ public class BlackJackManager : MonoBehaviour
     }
 
     public void playerLost(string reason) {
+        if (bettingManager.betInsured) {
+            moneyManager.incPlayerMoney(Mathf.RoundToInt(bettingManager.betAmount * 0.5f));
+        }
         healthManager.decPlayerHealth(bettingManager.betHealth);
         bettingManager.loseBodyParts();
         uiManager.updateAllText();

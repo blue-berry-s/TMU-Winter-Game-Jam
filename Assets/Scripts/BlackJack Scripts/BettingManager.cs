@@ -24,6 +24,8 @@ public class BettingManager : MonoBehaviour
 
     public int betTimes { get; private set; }
 
+    public bool betInsured { get; private set; }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -34,6 +36,7 @@ public class BettingManager : MonoBehaviour
         betAmount = 0;
         betHealth = 0;
         betTimes = 0;
+        betInsured = false;
 
     }
 
@@ -99,6 +102,7 @@ public class BettingManager : MonoBehaviour
 
     public void resetBets() {
         bettedBodyParts = new();
+        betInsured = false;
         updateBetDisplays();
         //Clear out the body UI - might be useful once we implement destorying the organ when player looses it
         // Switch out logic (I beleive BlackJackManager still stores old version of BetButtonLogic -> that needs to get refreshed
@@ -162,6 +166,10 @@ public class BettingManager : MonoBehaviour
             b.decAmount();
             b.updateDisplay();
         }
+    }
+
+    public void insureBet() {
+        betInsured = true;
     }
 
     

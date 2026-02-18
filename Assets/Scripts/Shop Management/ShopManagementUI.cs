@@ -11,8 +11,9 @@ public class ShopManagementUI : MonoBehaviour
     private HealthManager healthManager;
     private MoneyManager moneyManager;
 
-    public GameObject itemsDisplay;
     public Transform shopGrid;
+
+    [SerializeField] GameObject shopItemPrefab;
 
     private void Start()
     {
@@ -23,15 +24,12 @@ public class ShopManagementUI : MonoBehaviour
     public void updateTexts() {
         healthText.text = healthManager.getPlayerHealth().ToString();
         moneyText.text = moneyManager.getPlayerMoney().ToString();
-
     }
 
     public void displayShop(List<ShopItem> itemsForSale) {
         foreach (ShopItem i in itemsForSale) {
-            GameObject newItemDisplay = Instantiate(itemsDisplay, shopGrid);
-            ShopItemView itemView = newItemDisplay.GetComponent<ShopItemView>();
-            itemView.Setup(i);
-            
+            ShopItemView view = Instantiate(shopItemPrefab, shopGrid).GetComponent<ShopItemView>();
+            view.setUpBuy(i);
         }
 
     }

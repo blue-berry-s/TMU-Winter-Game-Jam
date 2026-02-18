@@ -1,23 +1,50 @@
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
-[CreateAssetMenu(menuName = "Shop/Shop Item")]
-public class ShopItem:ScriptableObject
+public abstract class ShopItem : ScriptableObject
 {
+
     public string itemName;
     public Sprite icon;
     public int price;
+    public bool forInventory;
+    public bool isBought { get; private set; }
+    public bool usesHealth = false;
 
-    public List<ShopItemEffect> effects;
+   
 
+    public abstract void Setup();
+    public abstract void Apply();
 
-    public void Purchase()
+    public void addToInventory() {
+        Debug.Log("Added to inventory");
+    }
+
+    public virtual string getName() {
+        return itemName;
+    }
+
+    public virtual int getPrice() {
+        return price;
+    }
+
+    public virtual Sprite getSprite() {
+        return icon;
+    }
+
+    public GameObject getManager()
     {
         GameObject managers = GameObject.FindGameObjectWithTag("SessionManagers");
-        foreach (var effect in effects)
-        {
-            effect.Apply(managers);
-        }
+        return managers;
+    }
+
+    public void setHealthTrue() {
+        usesHealth = true;
+    }
+
+    public bool getUsesHealth() {
+        return usesHealth;
     }
 
 }

@@ -9,7 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84ddcfa7f93cdf74884b81ad2bbf0b70, type: 3}
-  m_Name: Heal Player 10
-  m_EditorClassIdentifier: Assembly-CSharp::HealEffect
-  amount: 10
+  m_Script: {fileID: 11500000, guid: 55581dd20cad17b4e8771ed694625bb9, type: 3}
+  m_Name: New Gain Part Effect
+  m_EditorClassIdentifier: Assembly-CSharp::gainPartEffect
+  itemName: 
+  icon: {fileID: 0}
+  price: 0
+  forInventory: 0
+  managers: {fileID: 0}

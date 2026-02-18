@@ -1,22 +1,22 @@
 using UnityEngine;
 using System.Collections.Generic;
-using System.Linq;
-using System;
+
 
 public class ShopManager : MonoBehaviour
 {
-    private CardDisplayManager cardDisplayShop;
     private ShopManagementUI shopUI;
 
-    public List<ShopItem> itemsForSale;
+    public List<ShopItem> potentialItems;
+    public int maxNumberItems;
+
 
 
     private void Start()
     {
-        cardDisplayShop = GameObject.FindGameObjectWithTag("ShopManagers").GetComponentInChildren<CardDisplayManager>();
+        
         shopUI = GameObject.FindGameObjectWithTag("ShopManagers").GetComponentInChildren<ShopManagementUI>();
         shopUI.updateTexts();
-        shopUI.displayShop(itemsForSale);
+        shopUI.displayShop(potentialItems);
     }
 
     public void switchToGame() {

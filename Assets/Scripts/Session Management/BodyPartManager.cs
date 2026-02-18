@@ -59,15 +59,18 @@ public class BodyPartManager : MonoBehaviour
     }
 
     public void addBodyPart(BodyPart part) {
-        playerBodyInventory.Add(part);
+        BodyPart hasPart = playerBodyInventory.Find(p => p.Name == part.Name);
+        if (hasPart != null)
+        {
+            playerBodyInventory.Find(p => p.Name == part.Name).Amount++;
+        }
+        else {
+            playerBodyInventory.Add(part);
+        }
     }
 
-    public void increaseBodyPartValue(BodyPartData part, int amount) {
-        foreach (BodyPart p in playerBodyInventory) {
-            if (p.Name == part.Name) {
-                p.MoneyValue += amount;
-            }
-        }
+    public void increaseBodyPartValue(BodyPart part, int amount) {
+        playerBodyInventory.Find(p => p.Name == part.Name).Amount += amount;
     }
 
     public void decreaseBodyPartAmount(BodyPart part) {
