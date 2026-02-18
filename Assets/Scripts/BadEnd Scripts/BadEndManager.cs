@@ -12,4 +12,15 @@ public class BadEndManager : MonoBehaviour
         levelText.text = "You got to level " + gameDifficulty.getCurrentLevel().ToString();
     }
 
+    public void restartGame() {
+        SceneController.Instance
+            .newTransition()
+            .unload(SceneDatabse.Scenes.BadEnd)
+            .unload(SceneDatabse.Slots.Session)
+            .load(SceneDatabse.Slots.Session, SceneDatabse.Scenes.Session)
+            .load(SceneDatabse.Slots.SessionContent, SceneDatabse.Scenes.Shop, setActive: true)
+            .withClearUnusedAssets()
+            .Perform();
+    }
+
 }

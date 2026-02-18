@@ -11,23 +11,37 @@ public class BettingManager : MonoBehaviour
     [SerializeField] private Transform bodyUI;
 
     public int betAmount { get; private set; }
+    private int betAmountPrev;
     public int betHealth { get; private set; }
     [SerializeField] private TMP_Text betText;
     [SerializeField] private TMP_Text healthText;
 
     BodyPartManager playerBodyInventory;
+    HealthManager healthManager;
 
-    [SerializeField] private BodyPartView bodyView;
-    [SerializeField] private GameObject bettingButton;
-    private List<BetButtonLogic> allBetButtons = new();
+    [SerializeField] private GameObject bodyViewPrefab;
+    //private List<BetButtonLogic> allBetButtons = new();
+    private SideMenu betMenu;
+
+    [SerializeField] private TMP_Text betErrorMessage;
+
+    public int betTimes { get; private set; }
+
+    public bool betInsured { get; private set; }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         playerBodyInventory = GameObject.FindGameObjectWithTag("SessionManagers").GetComponentInChildren<BodyPartManager>();
+        betMenu = GameObject.FindGameObjectWithTag("BlackJackManagers").GetComponentInChildren<SideMenu>();
+        healthManager = GameObject.FindGameObjectWithTag("SessionManagers").GetComponentInChildren<HealthManager>();
+
         displayBodyParts();
         betAmount = 0;
         betHealth = 0;
+        betTimes = 0;
+        betInsured = false;
+        clearErrorMessage();
 
     }
 
@@ -35,13 +49,9 @@ public class BettingManager : MonoBehaviour
     {
         List<BodyPart> currentBodyParts = playerBodyInventory.getAllPlayerParts();
         for (int i = 0; i < currentBodyParts.Count; i++) {
-            GameObject newComp = Instantiate(bettingButton, bodyUI);
-            BodyPartView currentPart = Instantiate(bodyView, newComp.transform);
-            currentPart.setUp(currentBodyParts[i]);
-            allBodyParts.Add(currentPart);
-            BetButtonLogic logic = newComp.GetComponentInChildren<BetButtonLogic>();
-            logic.unlockBetButton();
-            allBetButtons.Add(logic);
+            BodyPartView newComp = Instantiate(bodyViewPrefab, bodyUI).GetComponentInChildren<BodyPartView>();
+            newComp.setUp(currentBodyParts[i]);
+            allBodyParts.Add(newComp);
 
         }
 
@@ -60,18 +70,41 @@ public class BettingManager : MonoBehaviour
     }
 
     public void lockBets() {
-        foreach (BetButtonLogic b in allBetButtons) {
-            if (b.isBetted)
-            {
-                b.lockBetButton();
-            }
+        //Can't bet over your current health / can't bet all your organs (or else will reach lock state when doubling down)
+        if ((betAmountPrev == 0) && hasBets() && (betHealth > healthManager.getMaxHealth())) {
+            setErrorMessage("Can't Bet over Max Health on first bet");
+            return;
         }
+
+        //makes sure double down/current bet is higher than previous amount
+        if (hasBets() && betAmount > betAmountPrev)
+        {
+            clearErrorMessage();
+            betTimes++;
+            betMenu.callCloseMenu();
+            foreach (BodyPartView b in allBodyParts)
+            {
+                if (b.isBetted)
+                {
+                    b.lockBetButton();
+                }
+            }
+            betAmountPrev = betAmount;
+            
+
+        }
+        else {
+            setErrorMessage("Must bet higher than $" + betAmountPrev);
+        }
+        
+
     }
 
     public void unlockBets() {
-        foreach (BetButtonLogic b in allBetButtons)
+        betMenu.callOpenMenu();
+        foreach (BodyPartView b in allBodyParts)
         {
-            if (!b.isBetted)
+            if (!b.isBetted && b.getAmount() > 0)
             {
                 b.unlockBetButton();
             }
@@ -79,23 +112,16 @@ public class BettingManager : MonoBehaviour
     }
 
     public void disableAllButtons() {
-        foreach (BetButtonLogic b in allBetButtons)
+        foreach (BodyPartView b in allBodyParts)
         {
-            if (!b.isBetted)
-            {
-                b.disableButton();
-            }
+            b.disableButton();
         }
-    }
-
-    public void doubleBets() {
-        betAmount = betAmount * 2;
-        updateBetDisplays();
     }
 
 
     public void resetBets() {
         bettedBodyParts = new();
+        betInsured = false;
         updateBetDisplays();
         //Clear out the body UI - might be useful once we implement destorying the organ when player looses it
         // Switch out logic (I beleive BlackJackManager still stores old version of BetButtonLogic -> that needs to get refreshed
@@ -105,10 +131,20 @@ public class BettingManager : MonoBehaviour
         //}
         //displayBodyParts();
 
-        foreach (BetButtonLogic b in allBetButtons)
+        foreach (BodyPartView b in allBodyParts)
         {
-            b.unlockBetButton();
+            
+            if (b.getAmount() > 0)
+            {
+                b.unlockBetButton();
+            }
+            else {
+                b.darkenSprite();
+                b.disableButton();
+            }
         }
+        clearBetTimes();
+        betAmountPrev = 0;
     }
 
     public void updateBetDisplays() {
@@ -116,6 +152,8 @@ public class BettingManager : MonoBehaviour
         betHealth = calcBetHealth();
         betText.text = "$" + betAmount.ToString();
         healthText.text = betHealth.ToString();
+
+        
     }
 
     private int calcBetAmount() {
@@ -130,6 +168,10 @@ public class BettingManager : MonoBehaviour
         return bettedBodyParts.Count > 0;
     }
 
+    public void clearBetTimes() {
+        betTimes = 0;
+    }
+
     private int calcBetHealth()
     {
         int amount = 0;
@@ -138,6 +180,25 @@ public class BettingManager : MonoBehaviour
             amount += bettedBodyParts[i].getHealth();
         }
         return amount;
+    }
+
+    public void loseBodyParts() {
+        foreach (BodyPartView b in bettedBodyParts) {
+            b.decAmount();
+            b.updateDisplay();
+        }
+    }
+
+    public void insureBet() {
+        betInsured = true;
+    }
+
+    public void setErrorMessage(string message) {
+        betErrorMessage.text = message;
+    }
+
+    public void clearErrorMessage() {
+        betErrorMessage.text = "";
     }
 
     

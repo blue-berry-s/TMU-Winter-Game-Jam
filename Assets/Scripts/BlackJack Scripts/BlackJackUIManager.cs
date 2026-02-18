@@ -12,6 +12,9 @@ public class BlackJackUIManager : MonoBehaviour
     [SerializeField] private TMP_Text moneyText;
     [SerializeField] private TMP_Text roundText;
     [SerializeField] private TMP_Text debtText;
+    [SerializeField] private TMP_Text RoundWinText;
+
+
     void Start()
     {
         moneyManager = GameObject.FindGameObjectWithTag("SessionManagers").GetComponentInChildren<MoneyManager>();
@@ -34,10 +37,22 @@ public class BlackJackUIManager : MonoBehaviour
     }
 
     public void updateRoundText() {
-        roundText.text = debtManager.getCurrentRound().ToString() + "/" + debtManager.getMaxRound().ToString();
+        roundText.text = "Round: " + debtManager.getCurrentRound().ToString() + "/" + debtManager.getMaxRound().ToString();
     }
 
     public void setDebtText() {
         debtText.text = "DEBT: $" + debtManager.getCurrentDebt().ToString();
     }
+
+    public void updateRoundText(string message) {
+        RoundWinText.text = message;
+        RoundWinText.gameObject.SetActive(true);
+
+
+    }
+
+    public void hideRoundText() {
+        RoundWinText.gameObject.SetActive(false);
+    }
+
 }

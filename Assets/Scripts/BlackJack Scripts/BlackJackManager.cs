@@ -39,6 +39,9 @@ public class BlackJackManager : MonoBehaviour
     private BlackJackUIManager uiManager;
     private DebtManager debtManager;
 
+    private Coroutine stand;
+    private bool roundOver = false;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -54,6 +57,7 @@ public class BlackJackManager : MonoBehaviour
 
         uiManager.setDebtText();
         uiManager.updateAllText();
+        bettingManager.unlockBets();
 
         startButton.onClick.RemoveAllListeners();
         startButton.onClick.AddListener(startRound);
@@ -69,8 +73,22 @@ public class BlackJackManager : MonoBehaviour
         {
             enableStartButton();
         }
-        else if (!betted && playerCards.Count == 0) {
+        else if (!betted && playerCards.Count == 0)
+        {
             disableStartButton();
+        }
+        else if (bettingManager.betTimes == 2) {
+            bettingManager.clearBetTimes();
+            PlayerDrawCard();
+            if (isBust(playerCards))
+            {
+                flipDealerCard();
+                compareValues();
+
+            }
+            else {
+                callPlayerStand();
+            }
         }
     }
 
@@ -97,6 +115,11 @@ public class BlackJackManager : MonoBehaviour
         if (busted)
         {
             flipDealerCard();
+            if (stand != null)
+            {
+                StopCoroutine(stand);
+                stand = null;
+            }
             StartCoroutine(compareValues());
 
         }
@@ -114,13 +137,25 @@ public class BlackJackManager : MonoBehaviour
         GameObject obj = cardVisualManager.spawnCard(flipped, card);
         dealerCards.Add(obj);
         cardVisualManager.DrawCardAnimation(dealerCards, maxDealerHandSize, dealerSplineContainer);
+        if (isBust(dealerCards)) {
+            flipDealerCard();
+            StartCoroutine(compareValues());
+        }
+    }
+
+    public void discardPlayerCard() {
+        DiscardedCards.Add(playerCards[playerCards.Count - 1].GetComponent<CardView>().getCard());
+        StartCoroutine( cardVisualManager.DiscardCardAnimation(playerCards[playerCards.Count - 1], 0.25f));
     }
 
 
     private IEnumerator setUpDealer() {
         DealerDrawCard(false);
+
         yield return new WaitForSeconds(0.15f);
         DealerDrawCard(true);
+
+
     }
 
     public void startRound() {
@@ -133,8 +168,6 @@ public class BlackJackManager : MonoBehaviour
         StartCoroutine(setUpDealer());
         PlayerDrawCard();
 
-        bettingManager.lockBets();
-
         //Handle Start Button UI
         startButton.onClick.RemoveAllListeners();
         startButton.onClick.AddListener(callResetBoard);
@@ -143,7 +176,7 @@ public class BlackJackManager : MonoBehaviour
 
     //This is needed because a button needs this (Buttons can't have IEnumerator)
     public void callPlayerStand() {
-        StartCoroutine(playerStand());
+        stand = StartCoroutine(playerStand());
     }
 
     private IEnumerator playerStand()
@@ -155,77 +188,99 @@ public class BlackJackManager : MonoBehaviour
         flipDealerCard();
 
         int dealerValue = calcValue(dealerCards);
-        int playerValue = calcValue(playerCards);
+        bool playerBusted = isBust(playerCards);
         bool busted = isBust(dealerCards);
 
-        while (dealerValue < 17)
+        if (busted)
         {
-            DealerDrawCard(false);
-            dealerValue = calcValue(dealerCards);
-            busted = isBust(dealerCards);
-
-            if (busted || dealerValue == 21)
+            StartCoroutine(compareValues());
+            if (stand != null)
             {
-                StartCoroutine(compareValues());
-                yield break;
+                StopCoroutine(stand);
+                stand = null;
+            }
+            yield break;
+        }
+        else if (playerBusted) {
+            StartCoroutine(compareValues());
+            if (stand != null)
+            {
+                StopCoroutine(stand);
+                stand = null;
+            }
+            yield break;
+        }
+        else
+        {
+            while (dealerValue < 17 && !busted)
+            {
+                DealerDrawCard(false);
+                dealerValue = calcValue(dealerCards);
+                yield return new WaitForSeconds(1f);
             }
 
-            yield return new WaitForSeconds(1f);
+            StartCoroutine(compareValues());
         }
 
-        StartCoroutine(compareValues());
+        
     }
 
     public void playerDoubleDown() {
-        PlayerDrawCard();
-        if (isBust(playerCards))
-        {
-            flipDealerCard();
-            StartCoroutine(compareValues());
-        }
-        else {
-            callPlayerStand();
-        }
-        
+        bettingManager.unlockBets();
     }
+
+
 
     //This can probably become its own thing
     public void flipDealerCard()
     {
         // Once we add flipping aniamtion lets put this under cardVisualManger
-        dealerCards[dealerCards.Count - 1].GetComponent<CardView>().flip();
+        foreach (GameObject c in dealerCards) {
+            CardView view = c.GetComponentInChildren<CardView>();
+            if (view.getFlipped()) {
+                view.flip();
+            }
+        }
     }
 
 
     IEnumerator compareValues()
     {
-        int playerValue = calcValue(playerCards);
-        int dealerValue = calcValue(dealerCards);
+        if (!roundOver) {
+            setRoundOver();
+            int playerValue = calcValue(playerCards);
+            int dealerValue = calcValue(dealerCards);
 
-        if (playerValue > 21)
-        {
-            playerLost("Player has busted");
-        }
-        else if (dealerValue > 21) {
-            playerWon("Dealer has busted");
-        }
-        else if (playerValue < dealerValue)
-        {
-            playerLost("Less than dealer");
-        }
-        else if (playerValue > dealerValue)
-        {
-            playerWon("More than dealer");
-        }
-        else {
-            Debug.Log("It's a Tie");
-        }
+            if (playerValue > 21)
+            {
+                playerLost("Player has busted");
+            }
+            else if (dealerValue > 21)
+            {
+                playerWon("Dealer has busted");
+            }
+            else if (playerValue < dealerValue)
+            {
+                playerLost("Less than dealer");
+            }
+            else if (playerValue > dealerValue)
+            {
+                playerWon("More than dealer");
+            }
+            else
+            {
+                uiManager.updateRoundText("It's a Tie");
+            }
 
-        yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.5f);
 
-        debtManager.nextRound();
-        disablePlayButtons();
-        enableStartButton();
+            debtManager.nextRound();
+            disablePlayButtons();
+            enableStartButton();
+
+            roundOver = false;
+        }
+        
 
     }
 
@@ -268,6 +323,7 @@ public class BlackJackManager : MonoBehaviour
     }
 
     public IEnumerator resetBoard() {
+        uiManager.hideRoundText();
         disableStartButton();
         bettingManager.resetBets();
 
@@ -281,6 +337,7 @@ public class BlackJackManager : MonoBehaviour
 
         addToDiscardPile();
         uiManager.updateAllText();
+        bettingManager.unlockBets();
 
 
     }
@@ -288,27 +345,33 @@ public class BlackJackManager : MonoBehaviour
     private void addToDiscardPile() {
         foreach (GameObject o in playerCards) {
             DiscardedCards.Add(o.GetComponent<CardView>().getCard());
+            Destroy(o);
         }
 
         foreach (GameObject o in dealerCards) {
             DiscardedCards.Add(o.GetComponent<CardView>().getCard());
+            Destroy(o);
         }
         playerCards = new();
         dealerCards = new();
     }
 
     public void playerLost(string reason) {
+        if (bettingManager.betInsured) {
+            moneyManager.incPlayerMoney(Mathf.RoundToInt(bettingManager.betAmount * 0.5f));
+        }
         healthManager.decPlayerHealth(bettingManager.betHealth);
+        bettingManager.loseBodyParts();
         uiManager.updateAllText();
-        Debug.Log("player Lost: " + reason);
+        uiManager.updateRoundText("player Lost: " + reason);
     }
 
     public void playerWon(string reason)
     {
         moneyManager.incPlayerMoney(bettingManager.betAmount);
         uiManager.updateAllText();
-        Debug.Log("player Won: " + reason);
-
+        uiManager.updateRoundText("player Won: " + reason);
+         
     }
 
     public void disablePlayButtons() {
@@ -331,18 +394,27 @@ public class BlackJackManager : MonoBehaviour
         startButton.interactable = true;
     }
 
-    public void Shuffle<T>(List<T> ts)
-    {
-        var count = ts.Count;
-        var last = count - 1;
-        for (var i = 0; i < last; ++i)
-        {
-            var r = UnityEngine.Random.Range(i, count);
-            var tmp = ts[i];
-            ts[i] = ts[r];
-            ts[r] = tmp;
-        }
+
+    public List<Card> getCurrentDeck() {
+        return currentWaveDeck;
     }
 
-    
+    public List<Card> getDiscardDeck() {
+        return DiscardedCards;
+    }
+
+    public int playerCardCount() {
+        return playerCards.Count;
+    }
+
+    public int dealerCardCount()
+    {
+        return dealerCards.Count;
+    }
+
+    private void setRoundOver() {
+        roundOver = true;
+    }
+
+
 }

@@ -60,4 +60,8 @@ public class HealthManager : MonoBehaviour
             .withClearUnusedAssets()
             .Perform();
     }
+
+    public int getMaxHealth() {
+        return maxPlayerHealth;
+    }
 }

@@ -13,6 +13,7 @@ public class CardsVisualManager : MonoBehaviour
 
     [SerializeField] private Transform discardPoint;
     [SerializeField] private Transform spawnPoint;
+    [SerializeField] GameObject discardPile;
 
     public GameObject spawnCard(bool flipped, Card drawnCard)
     {
@@ -48,13 +49,19 @@ public class CardsVisualManager : MonoBehaviour
             handCardCount[i].transform.DOMove(discardPoint.position, 0.2f);
             handCardCount[i].transform.DOLocalRotateQuaternion(discardPoint.rotation, 0.2f);
             yield return new WaitForSeconds(0.1f);
+            if (i == 0) {
+                discardPile.SetActive(true);
+            }
         }
     }
 
-    public void DiscardCardAnimation(GameObject card, float visualTime)
+    public IEnumerator DiscardCardAnimation(GameObject card, float visualTime)
     {
         card.transform.DOMove(discardPoint.position, visualTime);
         card.transform.DOLocalRotateQuaternion(discardPoint.rotation, visualTime);
+        yield return new WaitForSeconds(visualTime-0.2f);
+        discardPile.SetActive(true);
+        Destroy(card);
     }
 
     public void MoveCardAnimation(GameObject card, Transform position,float visualTime)

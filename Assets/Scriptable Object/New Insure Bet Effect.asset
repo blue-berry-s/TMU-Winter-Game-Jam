@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc36e98820b270e42b9592779ead108b, type: 3}
+  m_Name: New Insure Bet Effect
+  m_EditorClassIdentifier: Assembly-CSharp::insureBetEffect
+  itemName: Insure 50% Bet
+  icon: {fileID: -410955009, guid: e36cf56a1ffc9ed4d968dd37699b41b6, type: 3}
+  price: 50
+  forInventory: 1
+  usesHealth: 0

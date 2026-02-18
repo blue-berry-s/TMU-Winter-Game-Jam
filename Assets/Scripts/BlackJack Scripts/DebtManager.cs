@@ -18,12 +18,12 @@ public class DebtManager : MonoBehaviour
     }
 
     public void nextRound() {
-        if (currentRound + 1> maxRounds)
+        if (currentRound + 1 > maxRounds)
         {
             endWave();
         }
         else {
-            if (playerWonLoss() == 1) {
+            if (playerWonLoss() == 1 && !gameDifficulty.cannotSkip) {
                 endWave();
                 return;
             }
@@ -52,11 +52,22 @@ public class DebtManager : MonoBehaviour
             switchToLost();
             Debug.Log("PLAYER LOST");
         }
-        else {
+        else if (!gameDifficulty.cannotSkip && moneyManager.getPlayerMoney() >= gameDifficulty.currentDebt)
+        {
             gameDifficulty.nextLevel();
             moneyManager.decPlayerMoney(gameDifficulty.currentDebt);
             switchToShop();
         }
+        else if (gameDifficulty.cannotSkip && moneyManager.getPlayerMoney() >= gameDifficulty.currentDebt)
+        {
+            gameDifficulty.nextLevel();
+            moneyManager.decPlayerMoney(gameDifficulty.currentDebt);
+            switchToShop();
+        }
+        else {
+            Debug.Log("ERROR");
+        }
+        gameDifficulty.stopCannotSkip();
     }
 
     public void switchToShop()

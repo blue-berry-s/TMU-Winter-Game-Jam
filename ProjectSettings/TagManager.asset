@@ -6,6 +6,9 @@ TagManager:
   tags:
   - SessionManagers
   - BlackJackManagers
+  - ShopManagers
+  - BodyPart
+  - Inventory
   layers:
   - Default
   - TransparentFX
