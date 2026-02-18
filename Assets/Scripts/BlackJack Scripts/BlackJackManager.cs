@@ -318,7 +318,7 @@ public class BlackJackManager : MonoBehaviour
         moneyManager.incPlayerMoney(bettingManager.betAmount);
         uiManager.updateAllText();
         uiManager.updateRoundText("player Won: " + reason);
-
+         
     }
 
     public void disablePlayButtons() {

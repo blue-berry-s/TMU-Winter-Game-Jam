@@ -774,8 +774,7 @@ MonoBehaviour:
   bodyUI: {fileID: 1329938735}
   betText: {fileID: 425339457}
   healthText: {fileID: 647475081}
-  bodyView: {fileID: 1932669924136160976, guid: 8151de129b8143548a33fe6463c2caeb, type: 3}
-  bettingButton: {fileID: 5748921414382655487, guid: f7ed24631ada7eb4087ec0720ccac063, type: 3}
+  bodyViewPrefab: {fileID: 5748921414382655487, guid: f7ed24631ada7eb4087ec0720ccac063, type: 3}
 --- !u!1 &323864393
 GameObject:
   m_ObjectHideFlags: 0

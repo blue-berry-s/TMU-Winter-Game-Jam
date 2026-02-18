@@ -18,9 +18,8 @@ public class BettingManager : MonoBehaviour
 
     BodyPartManager playerBodyInventory;
 
-    [SerializeField] private BodyPartView bodyView;
-    [SerializeField] private GameObject bettingButton;
-    private List<BetButtonLogic> allBetButtons = new();
+    [SerializeField] private GameObject bodyViewPrefab;
+    //private List<BetButtonLogic> allBetButtons = new();
     private SideMenu betMenu;
 
     public int betTimes { get; private set; }
@@ -42,14 +41,9 @@ public class BettingManager : MonoBehaviour
     {
         List<BodyPart> currentBodyParts = playerBodyInventory.getAllPlayerParts();
         for (int i = 0; i < currentBodyParts.Count; i++) {
-            GameObject newComp = Instantiate(bettingButton, bodyUI);
-            BodyPartView currentPart = Instantiate(bodyView, newComp.transform);
-            currentPart.setUp(currentBodyParts[i]);
-            allBodyParts.Add(currentPart);
-            BetButtonLogic logic = newComp.GetComponentInChildren<BetButtonLogic>();
-            logic.setUp(currentPart);
-            logic.unlockBetButton();
-            allBetButtons.Add(logic);
+            BodyPartView newComp = Instantiate(bodyViewPrefab, bodyUI).GetComponentInChildren<BodyPartView>();
+            newComp.setUp(currentBodyParts[i]);
+            allBodyParts.Add(newComp);
 
         }
 
@@ -71,7 +65,7 @@ public class BettingManager : MonoBehaviour
         if (hasBets() && betAmount > betAmountPrev) {
             betTimes++;
             betMenu.callCloseMenu();
-            foreach (BetButtonLogic b in allBetButtons)
+            foreach (BodyPartView b in allBodyParts)
             {
                 if (b.isBetted)
                 {
@@ -86,10 +80,9 @@ public class BettingManager : MonoBehaviour
 
     public void unlockBets() {
         betMenu.callOpenMenu();
-        foreach (BetButtonLogic b in allBetButtons)
+        foreach (BodyPartView b in allBodyParts)
         {
-            BodyPartView p = allBodyParts.Find(c => c.getName() == b.partName);
-            if (!b.isBetted && p.getAmount() > 0)
+            if (!b.isBetted && b.getAmount() > 0)
             {
                 b.unlockBetButton();
             }
@@ -97,7 +90,7 @@ public class BettingManager : MonoBehaviour
     }
 
     public void disableAllButtons() {
-        foreach (BetButtonLogic b in allBetButtons)
+        foreach (BodyPartView b in allBodyParts)
         {
             b.disableButton();
         }
@@ -115,16 +108,15 @@ public class BettingManager : MonoBehaviour
         //}
         //displayBodyParts();
 
-        foreach (BetButtonLogic b in allBetButtons)
+        foreach (BodyPartView b in allBodyParts)
         {
             
-            BodyPartView p = allBodyParts.Find(c => c.getName() == b.partName);
-            if (p.getAmount() > 0)
+            if (b.getAmount() > 0)
             {
                 b.unlockBetButton();
             }
             else {
-                p.darkenSprite();
+                b.darkenSprite();
                 b.disableButton();
             }
         }
@@ -168,7 +160,7 @@ public class BettingManager : MonoBehaviour
     public void loseBodyParts() {
         foreach (BodyPartView b in bettedBodyParts) {
             b.decAmount();
-            allBetButtons.Find(bu => bu.partName == b.getName()).updateTexts(b);
+            b.updateDisplay();
         }
     }
 
