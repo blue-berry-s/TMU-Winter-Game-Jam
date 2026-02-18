@@ -2,14 +2,15 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Shop/Effects/Insure Bet Effect")]
 public class insureBetEffect : ShopItem
 {
-    BlackJackManager blackJackManager;
+    BettingManager bettingManager;
     public override void Setup()
     {
         
     }
-    public override void Apply()
+    public override bool Apply()
     {
-        blackJackManager = GameObject.FindGameObjectWithTag("BlackJackManagers").GetComponentInChildren<BlackJackManager>();
-        blackJackManager.discardPlayerCard();
+        bettingManager = GameObject.FindGameObjectWithTag("BlackJackManagers").GetComponentInChildren<BettingManager>();
+        bettingManager.insureBet();
+        return true;
     }
 }

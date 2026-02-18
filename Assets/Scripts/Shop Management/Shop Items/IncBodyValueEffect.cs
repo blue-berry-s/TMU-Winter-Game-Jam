@@ -14,9 +14,10 @@ public class IncBodyValueEffect : ShopItem
         bodyPart = bodyPartManager.getRandomPart();
         amount = Mathf.Max(1, Mathf.RoundToInt(bodyPart.HealthCost * 0.25f));
     }
-    public override void Apply()
+    public override bool Apply()
     {
         bodyPartManager.increaseBodyPartValue(bodyPart, amount);
+        return true;
     }
 
     public override int getPrice()

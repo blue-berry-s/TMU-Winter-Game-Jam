@@ -411,7 +411,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a894c56a08ee03e41806c08468317873, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MoneyManager
-  playerMoney: 40
+  playerMoney: 0
 --- !u!1 &2029094184
 GameObject:
   m_ObjectHideFlags: 0

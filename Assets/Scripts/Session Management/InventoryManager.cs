@@ -19,6 +19,10 @@ public class InventoryManager : MonoBehaviour
         return inventory.Count == maxInventory;
     }
 
+    public int getInventoryCount() {
+        return inventory.Count();
+    }
+
     public List<ShopItem> getInventory() {
         return inventory;
     }

@@ -37,7 +37,7 @@ public class BlackJackUIManager : MonoBehaviour
     }
 
     public void updateRoundText() {
-        roundText.text = debtManager.getCurrentRound().ToString() + "/" + debtManager.getMaxRound().ToString();
+        roundText.text = "Round: " + debtManager.getCurrentRound().ToString() + "/" + debtManager.getMaxRound().ToString();
     }
 
     public void setDebtText() {

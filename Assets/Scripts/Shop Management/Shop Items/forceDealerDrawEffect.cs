@@ -7,9 +7,17 @@ public class forceDealerDrawEffect : ShopItem
     {
         
     }
-    public override void Apply()
+    public override bool Apply()
     {
         blackJackManager = GameObject.FindGameObjectWithTag("BlackJackManagers").GetComponentInChildren<BlackJackManager>();
-        blackJackManager.DealerDrawCard(false);
+        Debug.Log("B:" + blackJackManager.dealerCardCount());
+        if (blackJackManager.dealerCardCount() > 0)
+        {
+            blackJackManager.DealerDrawCard(false);
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 }

@@ -12,10 +12,10 @@ public abstract class ShopItem : ScriptableObject
     public bool isBought { get; private set; }
     public bool usesHealth = false;
 
-   
+  
 
     public abstract void Setup();
-    public abstract void Apply();
+    public abstract bool Apply();
 
     public void addToInventory() {
         Debug.Log("Added to inventory");

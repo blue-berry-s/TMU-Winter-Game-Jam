@@ -17,10 +17,13 @@ public class BettingManager : MonoBehaviour
     [SerializeField] private TMP_Text healthText;
 
     BodyPartManager playerBodyInventory;
+    HealthManager healthManager;
 
     [SerializeField] private GameObject bodyViewPrefab;
     //private List<BetButtonLogic> allBetButtons = new();
     private SideMenu betMenu;
+
+    [SerializeField] private TMP_Text betErrorMessage;
 
     public int betTimes { get; private set; }
 
@@ -31,12 +34,14 @@ public class BettingManager : MonoBehaviour
     {
         playerBodyInventory = GameObject.FindGameObjectWithTag("SessionManagers").GetComponentInChildren<BodyPartManager>();
         betMenu = GameObject.FindGameObjectWithTag("BlackJackManagers").GetComponentInChildren<SideMenu>();
+        healthManager = GameObject.FindGameObjectWithTag("SessionManagers").GetComponentInChildren<HealthManager>();
 
         displayBodyParts();
         betAmount = 0;
         betHealth = 0;
         betTimes = 0;
         betInsured = false;
+        clearErrorMessage();
 
     }
 
@@ -65,7 +70,16 @@ public class BettingManager : MonoBehaviour
     }
 
     public void lockBets() {
-        if (hasBets() && betAmount > betAmountPrev) {
+        //Can't bet over your current health / can't bet all your organs (or else will reach lock state when doubling down)
+        if ((betAmountPrev == 0) && hasBets() && (betHealth >= healthManager.getMaxHealth())) {
+            setErrorMessage("Can't Bet over Max Health on first bet");
+            return;
+        }
+
+        //makes sure double down/current bet is higher than previous amount
+        if (hasBets() && betAmount > betAmountPrev)
+        {
+            clearErrorMessage();
             betTimes++;
             betMenu.callCloseMenu();
             foreach (BodyPartView b in allBodyParts)
@@ -76,6 +90,11 @@ public class BettingManager : MonoBehaviour
                 }
             }
             betAmountPrev = betAmount;
+            
+
+        }
+        else {
+            setErrorMessage("Must bet higher than $" + betAmountPrev);
         }
         
 
@@ -170,6 +189,14 @@ public class BettingManager : MonoBehaviour
 
     public void insureBet() {
         betInsured = true;
+    }
+
+    public void setErrorMessage(string message) {
+        betErrorMessage.text = message;
+    }
+
+    public void clearErrorMessage() {
+        betErrorMessage.text = "";
     }
 
     

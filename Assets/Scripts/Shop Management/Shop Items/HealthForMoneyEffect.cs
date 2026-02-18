@@ -21,11 +21,12 @@ public class HealthForMoneyEffect : ShopItem
         setHealthTrue();
 
     }
-    public override void Apply()
+    public override bool Apply()
     {
         
         healthManager.decPlayerHealth(Healthamount);
         moneyManager.incPlayerMoney(moneyAmount);
+        return true;
 
     }
 

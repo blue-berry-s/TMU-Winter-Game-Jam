@@ -13,9 +13,10 @@ public class gainPartEffect : ShopItem
     }
 
     //Probably need to switch the logic so that it caluclates the amount to increase (deprecating in amount)
-    public override void Apply()
+    public override bool Apply()
     {
         bodyPartManager.addBodyPart(bodyPart);
+        return true;
     }
 
     public override int getPrice()

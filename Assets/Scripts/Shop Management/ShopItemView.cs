@@ -82,14 +82,14 @@ public class ShopItemView : MonoBehaviour
         {
             if (shopItem.forInventory && !inventory.inventoryFull())
             {
-                GameObject.FindGameObjectWithTag("Inventory").GetComponentInChildren<InventoryDisplay>().addInventory(shopItem);
                 inventory.addToInventory(shopItem);
             }
             else if (!shopItem.forInventory)
             {
                 shopItem.Apply();
-                moneyManager.decPlayerMoney(shopItem.getPrice());
+               
             }
+            moneyManager.decPlayerMoney(shopItem.getPrice());
             changeBoughtDisplay();
             shopUI.updateTexts();
         }
@@ -108,15 +108,24 @@ public class ShopItemView : MonoBehaviour
     }
 
     public void UseItem() {
-        shopItem.Apply();
-        InventoryDisplay inventoryUI = GameObject.FindGameObjectWithTag("Inventory").GetComponentInChildren<InventoryDisplay>();
-        inventory.deleteFromInventory(shopItem);
-        inventoryUI.removeItem(shopItem);
+        GameObject test = GameObject.FindGameObjectWithTag("BlackJackManagers");
+        if (test != null) {
+            if (shopItem.Apply())
+            {
+                InventoryDisplay inventoryUI = GameObject.FindGameObjectWithTag("Inventory").GetComponentInChildren<InventoryDisplay>();
+                inventory.deleteFromInventory(shopItem);
+            }
+            else {
+                return;
+            }
+            
+        }
     }
 
     public void changeBoughtDisplay()
     {
         button.interactable = false;
         Icon.color = new Color32(122, 122, 122, 255);
+        
     }
 }

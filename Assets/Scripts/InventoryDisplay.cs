@@ -7,16 +7,13 @@ public class InventoryDisplay : MonoBehaviour
     InventoryManager inventoryManager;
 
     List<ShopItem> items;
+    int prevCount;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         inventoryManager = GameObject.FindGameObjectWithTag("SessionManagers").GetComponentInChildren<InventoryManager>();
         items = inventoryManager.getInventory();
-        updateInventory();
-    }
-
-    public void addInventory(ShopItem item) {
-        items.Add(item);
+        prevCount = items.Count;
         updateInventory();
     }
 
@@ -25,14 +22,18 @@ public class InventoryDisplay : MonoBehaviour
         {
             DestroyImmediate(transform.GetChild(0).gameObject);
         }
+        items = inventoryManager.getInventory();
         foreach (ShopItem i in items) {
             ShopItemView view = Instantiate(itemPrefab, gameObject.transform).GetComponent<ShopItemView>();
             view.setUpUse(i);
         }
     }
 
-    public void removeItem(ShopItem item) {
-        items.Remove(item);
-        updateInventory();
+    private void Update()
+    {
+        if (inventoryManager.getInventoryCount() != prevCount) {
+            updateInventory();
+            prevCount = inventoryManager.getInventoryCount();
+        }
     }
 }

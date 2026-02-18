@@ -17,9 +17,10 @@ public class HealEffect : ShopItem
         amount = Mathf.RoundToInt(percentage*healthManager.getMaxHealth());
 
     }
-    public override void Apply()
+    public override bool Apply()
     {
         healthManager.incPlayerHealth(amount);
+        return true;
     }
 
     public override int getPrice()

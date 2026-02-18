@@ -55,10 +55,13 @@ public class CardsVisualManager : MonoBehaviour
         }
     }
 
-    public void DiscardCardAnimation(GameObject card, float visualTime)
+    public IEnumerator DiscardCardAnimation(GameObject card, float visualTime)
     {
         card.transform.DOMove(discardPoint.position, visualTime);
         card.transform.DOLocalRotateQuaternion(discardPoint.rotation, visualTime);
+        yield return new WaitForSeconds(visualTime-0.2f);
+        discardPile.SetActive(true);
+        Destroy(card);
     }
 
     public void MoveCardAnimation(GameObject card, Transform position,float visualTime)

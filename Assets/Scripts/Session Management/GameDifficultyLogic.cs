@@ -6,10 +6,12 @@ public class GameDifficultyLogic : MonoBehaviour
     private int currentLevel = 1;
 
     [SerializeField] private AnimationCurve DebtDifficulty;
+    public bool cannotSkip { get; private set; }
 
     private void Start()
     {
         calcDifficulty();
+        cannotSkip = false;
     }
 
     public void nextLevel() {
@@ -27,6 +29,14 @@ public class GameDifficultyLogic : MonoBehaviour
 
     public int getCurrentLevel() {
         return currentLevel;
+    }
+
+    public void triggerCannotSkip() {
+        cannotSkip = true;
+    }
+
+    public void stopCannotSkip() {
+        cannotSkip = true;
     }
 
 
