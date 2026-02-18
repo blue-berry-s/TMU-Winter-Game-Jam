@@ -33,4 +33,28 @@ public class BodyPartView : MonoBehaviour
         return bodyPart.Name;
     }
 
+    public int getAmount() {
+        return bodyPart.Amount;
+    }
+
+    public void incAmount() {
+        bodyPart.Amount++;
+    }
+
+    public void decAmount() {
+        bodyPart.Amount--;
+    }
+
+    public BodyPart getBodyPart() {
+        return bodyPart;
+    }
+
+    public void darkenSprite() {
+        this.gameObject.GetComponentInChildren<Image>().color = new Color32(127, 127, 127, 255);
+    }
+
+    public void lightenSprite() {
+        this.gameObject.GetComponentInChildren<Image>().color = new Color32(255, 255, 255, 255);
+    }
+
 }

@@ -308,6 +308,7 @@ public class BlackJackManager : MonoBehaviour
 
     public void playerLost(string reason) {
         healthManager.decPlayerHealth(bettingManager.betHealth);
+        bettingManager.loseBodyParts();
         uiManager.updateAllText();
         uiManager.updateRoundText("player Lost: " + reason);
     }

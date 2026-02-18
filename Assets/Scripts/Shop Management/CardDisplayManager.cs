@@ -25,9 +25,9 @@ public class CardDisplayManager : MonoBehaviour
 
     private void Start()
     {
-        cardmanager = GameObject.FindGameObjectWithTag("SessionManagers").GetComponentInChildren<CardManager>();
-        cardmanager.setUpDeck();
-        StartCoroutine(showFullDeck());
+        //cardmanager = GameObject.FindGameObjectWithTag("SessionManagers").GetComponentInChildren<CardManager>();
+        //cardmanager.setUpDeck();
+        //StartCoroutine(showFullDeck());
     }
     IEnumerator showFullDeck()
     {

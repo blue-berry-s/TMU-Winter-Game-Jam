@@ -6,6 +6,7 @@ public class BetButtonLogic : MonoBehaviour
 {
     BettingManager bettingManager;
     public bool isBetted { get; private set; }
+    public string partName;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -16,15 +17,20 @@ public class BetButtonLogic : MonoBehaviour
 
     public void setUp(BodyPartView view)
     {
+        
         TMP_Text[] texts= gameObject.GetComponent<RectTransform>().parent.GetComponentsInChildren<TMP_Text>();
         if (texts.Length < 3) {
             Debug.Log("ERROR SETTING UP TEXTS");
             return;
         }
 
-        texts[1].text = view.getHealth().ToString();
-        texts[2].text = view.getName();
-        texts[3].text = view.getMoney().ToString();
+        texts[1].text = "Quantity: " + view.getAmount();
+        texts[2].text = view.getHealth().ToString();
+        texts[3].text = view.getName();
+        texts[4].text = "$" + view.getMoney().ToString();
+
+        partName = view.getName();
+
     }
 
 
@@ -69,5 +75,20 @@ public class BetButtonLogic : MonoBehaviour
         thisButton.GetComponentInChildren<TMP_Text>().text = "Bet";
         thisButton.interactable = true;
         isBetted = false;
+    }
+
+    public void updateTexts(BodyPartView view) {
+        TMP_Text[] texts = gameObject.GetComponent<RectTransform>().parent.GetComponentsInChildren<TMP_Text>();
+        if (texts.Length < 3)
+        {
+            Debug.Log("ERROR SETTING UP TEXTS");
+            return;
+        }
+
+        texts[1].text = "Quantity: " + view.getAmount();
+        texts[2].text = view.getHealth().ToString();
+        texts[3].text = view.getName();
+        texts[4].text = "$" + view.getMoney().ToString();
+
     }
 }

@@ -70,6 +70,10 @@ public class BodyPartManager : MonoBehaviour
         }
     }
 
+    public void decreaseBodyPartAmount(BodyPart part) {
+        playerBodyInventory.Find(p => p.Name == part.Name).Amount--;
+    }
+
 
 
     
