@@ -30,6 +30,8 @@ public class SoundManager : MonoBehaviour
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
         }
+
+        playSoundtrack();
     }
 
     public void playSound(string name) {
@@ -42,6 +44,20 @@ public class SoundManager : MonoBehaviour
             s.source.Play();
         }
             
+    }
+
+    public void stopSound(string name)
+    {
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+        if (s == null)
+        {
+            Debug.LogWarning("ERROR FINDING SOUND: " + name);
+        }
+        else
+        {
+            s.source.Stop();
+        }
+
     }
 
     public void playSound(string name,float volume, float pitch )
@@ -140,6 +156,19 @@ public class SoundManager : MonoBehaviour
 
     public void playIncreaseOrganValue() {
         playSound("IncreaseOrganValue");
+    }
+
+    public void playSoundtrack() {
+        playSound("Soundtrack");
+    }
+
+    public void stopSoundtrack() {
+        stopSound("Soundtrack");
+    }
+
+    public void restartSoundtrack() {
+        stopSound("Soundtrack");
+        playSound("Soundtrack");
     }
 }
 

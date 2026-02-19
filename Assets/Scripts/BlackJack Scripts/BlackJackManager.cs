@@ -83,7 +83,7 @@ public class BlackJackManager : MonoBehaviour
             if (isBust(playerCards))
             {
                 flipDealerCard();
-                compareValues();
+                StartCoroutine(compareValues());
 
             }
             else {

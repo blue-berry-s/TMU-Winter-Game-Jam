@@ -30,6 +30,7 @@ public class HealthManager : MonoBehaviour
     {
         if (playerHealth - amount <= 0)
         {
+            FindFirstObjectByType<SoundManager>().stopSoundtrack();
             FindFirstObjectByType<SoundManager>().playPlayerDie();
             switchToLost();
             Debug.Log("You DIED");
