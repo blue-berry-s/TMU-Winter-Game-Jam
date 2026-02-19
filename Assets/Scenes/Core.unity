@@ -267,43 +267,43 @@ MonoBehaviour:
   sounds:
   - name: CardDraw
     clip: {fileID: 8300000, guid: c44909db7ee47ba48a486968f8728715, type: 3}
-    volume: 0.25
+    volume: 0.75
     pitch: 1
     source: {fileID: 0}
     loop: 0
   - name: ShopPurchase
     clip: {fileID: 8300000, guid: c8dc20dcd0371fc4ea9ee622e80897cf, type: 3}
-    volume: 1.5
+    volume: 2
     pitch: 2
     source: {fileID: 0}
     loop: 0
   - name: CardFlip
     clip: {fileID: 8300000, guid: 8ef2a9beab019004a94b5c1781c880f4, type: 3}
-    volume: 0.25
+    volume: 0.75
     pitch: 1
     source: {fileID: 0}
     loop: 0
   - name: CardsShuffle
     clip: {fileID: 8300000, guid: e1bf9797e7b09f342a860b5b60cc8508, type: 3}
-    volume: 0.75
+    volume: 1.25
     pitch: 1
     source: {fileID: 0}
     loop: 0
   - name: DiceRoll1
     clip: {fileID: 8300000, guid: 46617250d31ef144fb3c53a4c6c26dac, type: 3}
-    volume: 0.3
+    volume: 0.8
     pitch: 1
     source: {fileID: 0}
     loop: 0
   - name: DiceRoll2
     clip: {fileID: 8300000, guid: fd74b21f7c91dcc4aa05554741935abf, type: 3}
-    volume: 0.15
+    volume: 0.55
     pitch: 1
     source: {fileID: 0}
     loop: 0
   - name: UINotAllowed
     clip: {fileID: 8300000, guid: da6e7e68dd790034483674c5d08cea39, type: 3}
-    volume: 1
+    volume: 3
     pitch: 1
     source: {fileID: 0}
     loop: 0
@@ -315,70 +315,76 @@ MonoBehaviour:
     loop: 0
   - name: KnifeStab
     clip: {fileID: 8300000, guid: 29b33993511f7ba41980bedbf87ef51a, type: 3}
-    volume: 0.8
+    volume: 1.3
     pitch: 1
     source: {fileID: 0}
     loop: 0
   - name: GutSquish1
     clip: {fileID: 8300000, guid: 7b7218ca4cb0b2048bee8651faf0dcec, type: 3}
-    volume: 0.7
+    volume: 1.2
     pitch: 1
     source: {fileID: 0}
     loop: 0
   - name: UIHeal
     clip: {fileID: 8300000, guid: e2bcfa42caa06eb41bb61a804939bd10, type: 3}
-    volume: 0.5
+    volume: 1
     pitch: 0.5
     source: {fileID: 0}
     loop: 0
   - name: OrganSquish2
     clip: {fileID: 8300000, guid: 534d1ed5d515d964a99641a055891fd8, type: 3}
-    volume: 0.5
+    volume: 1
     pitch: 0.5
     source: {fileID: 0}
     loop: 0
   - name: OrganSquish3
     clip: {fileID: 8300000, guid: efe170f43d09f984492c4789d38f6927, type: 3}
-    volume: 0.25
+    volume: 0.75
     pitch: 0.5
     source: {fileID: 0}
     loop: 0
   - name: UIButton
     clip: {fileID: 8300000, guid: b792acd7ae86cc4448626f014c27da83, type: 3}
-    volume: 0.5
+    volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
   - name: LockSound
     clip: {fileID: 8300000, guid: 022aec259bcbbfb418ae5bac1ed80b82, type: 3}
-    volume: 0.5
+    volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
   - name: PlayerGetMoney
     clip: {fileID: 8300000, guid: 8a5f7eab7e1017848bb919a6560f8119, type: 3}
-    volume: 1
+    volume: 2
     pitch: 1
     source: {fileID: 0}
     loop: 0
   - name: PlayerDie
     clip: {fileID: 8300000, guid: faf92648ce8e3904fb8c9b37bf3eb094, type: 3}
-    volume: 1
+    volume: 1.5
     pitch: 1
     source: {fileID: 0}
     loop: 0
   - name: BetShield
     clip: {fileID: 8300000, guid: d884f30a328bec844a9a62453c4f984c, type: 3}
-    volume: 1
+    volume: 1.5
     pitch: 1
     source: {fileID: 0}
     loop: 0
   - name: IncreaseOrganValue
     clip: {fileID: 8300000, guid: 1faa745ceb1181c4dac63ed54ffccf87, type: 3}
-    volume: 1
+    volume: 3
     pitch: 1
     source: {fileID: 0}
     loop: 0
+  - name: Soundtrack
+    clip: {fileID: 8300000, guid: 8f7f1d44e6c767442b1034bf0a1e780b, type: 3}
+    volume: 0.75
+    pitch: 1
+    source: {fileID: 0}
+    loop: 1
 --- !u!1 &897899909
 GameObject:
   m_ObjectHideFlags: 0

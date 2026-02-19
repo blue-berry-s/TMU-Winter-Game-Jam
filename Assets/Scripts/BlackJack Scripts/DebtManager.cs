@@ -51,6 +51,7 @@ public class DebtManager : MonoBehaviour
         currentRound = 1;
         if (moneyManager.getPlayerMoney() < gameDifficulty.currentDebt)
         {
+            FindFirstObjectByType<SoundManager>().stopSoundtrack();
             FindFirstObjectByType<SoundManager>().playPlayerDie();
             switchToLost();
             Debug.Log("PLAYER LOST");
