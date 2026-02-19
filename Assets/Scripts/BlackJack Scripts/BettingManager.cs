@@ -72,6 +72,7 @@ public class BettingManager : MonoBehaviour
     public void lockBets() {
         //Can't bet over your current health / can't bet all your organs (or else will reach lock state when doubling down)
         if ((betAmountPrev == 0) && hasBets() && (betHealth > healthManager.getMaxHealth())) {
+            FindFirstObjectByType<SoundManager>().playUINotAllowed();
             setErrorMessage("Can't Bet over Max Health on first bet");
             return;
         }
@@ -90,10 +91,11 @@ public class BettingManager : MonoBehaviour
                 }
             }
             betAmountPrev = betAmount;
-            
 
+            FindFirstObjectByType<SoundManager>().playConfirmButton();
         }
         else {
+            FindFirstObjectByType<SoundManager>().playUINotAllowed();
             setErrorMessage("Must bet higher than $" + betAmountPrev);
         }
         

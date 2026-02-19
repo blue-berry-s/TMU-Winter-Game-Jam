@@ -77,7 +77,7 @@ public class ShopItemView : MonoBehaviour
 
     public void BuyItem()
     {
-       
+
         if (moneyManager.getPlayerMoney() >= shopItem.getPrice())
         {
             if (shopItem.forInventory && !inventory.inventoryFull())
@@ -87,22 +87,30 @@ public class ShopItemView : MonoBehaviour
             else if (!shopItem.forInventory)
             {
                 shopItem.Apply();
-               
+
             }
             FindFirstObjectByType<SoundManager>().playRandomizePitchSound("ShopPurchase");
             moneyManager.decPlayerMoney(shopItem.getPrice());
             changeBoughtDisplay();
             shopUI.updateTexts();
         }
-        else if (shopItem.usesHealth) {
-            
-            if (healthManager.getPlayerHealth() > shopItem.getPrice()) {
-                
+        else if (shopItem.usesHealth)
+        {
+
+            if (healthManager.getPlayerHealth() > shopItem.getPrice())
+            {
+
                 shopItem.Apply();
                 changeBoughtDisplay();
                 shopUI.updateTexts();
-                
+
             }
+            else {
+                FindFirstObjectByType<SoundManager>().playUINotAllowed();
+            }
+        }
+        else {
+            FindFirstObjectByType<SoundManager>().playUINotAllowed();
         }
 
         shopUI.updateTexts();
@@ -110,16 +118,21 @@ public class ShopItemView : MonoBehaviour
 
     public void UseItem() {
         GameObject test = GameObject.FindGameObjectWithTag("BlackJackManagers");
-        if (test != null) {
+        if (test != null)
+        {
             if (shopItem.Apply())
             {
                 InventoryDisplay inventoryUI = GameObject.FindGameObjectWithTag("Inventory").GetComponentInChildren<InventoryDisplay>();
                 inventory.deleteFromInventory(shopItem);
             }
-            else {
+            else
+            {
+                FindFirstObjectByType<SoundManager>().playUINotAllowed();
                 return;
             }
-            
+        }
+        else {
+            FindFirstObjectByType<SoundManager>().playUINotAllowed();
         }
     }
 

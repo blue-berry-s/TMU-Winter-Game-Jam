@@ -19,6 +19,7 @@ public class OpenDeckDisplay : MonoBehaviour
     }
     private void OnMouseDown()
     {
+        FindFirstObjectByType<SoundManager>().playRandomizePitchSound("CardsShuffle", 1.5f, 2f);
         DeckDisplay.SetActive(true);
     }
 

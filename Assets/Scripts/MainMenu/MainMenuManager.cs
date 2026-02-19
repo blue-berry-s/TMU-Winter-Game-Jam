@@ -3,6 +3,7 @@ using UnityEngine;
 public class MainMenuManager : MonoBehaviour
 {
     public void startSession() {
+        FindFirstObjectByType<SoundManager>().playUIButton();
         SceneController.Instance
             .newTransition()
             .load(SceneDatabse.Slots.Session, SceneDatabse.Scenes.Session)

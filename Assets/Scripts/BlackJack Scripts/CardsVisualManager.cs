@@ -82,7 +82,7 @@ public class CardsVisualManager : MonoBehaviour
     }
 
     private void drawCardSound() {
-        soundManager.playRandomizePitchSound("CardDraw", 1.2f, 2f);
+        soundManager.playRandomizePitchSound("CardDraw", 1.5f, 3f);
     }
 
 }

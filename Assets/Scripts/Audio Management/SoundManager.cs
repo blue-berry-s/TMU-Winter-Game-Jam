@@ -34,7 +34,14 @@ public class SoundManager : MonoBehaviour
 
     public void playSound(string name) {
         Sound s = Array.Find(sounds, sound => sound.name == name);
-        s.source.Play();
+        if (s == null)
+        {
+            Debug.LogWarning("ERROR FINDING SOUND: " + name);
+        }
+        else {
+            s.source.Play();
+        }
+            
     }
 
     public void playSound(string name,float volume, float pitch )
@@ -72,6 +79,67 @@ public class SoundManager : MonoBehaviour
             s.source.Play();
         }
             
+    }
+
+    public void playUINotAllowed() {
+       
+        playSound("UINotAllowed");
+        
+    }
+
+    public void playPlayerHurt() {
+        
+        playSound("KnifeStab");
+        playSound("UIHurt");
+
+    }
+
+    public void playPlayerHeal() {
+        playSound("GutSquish1");
+        playSound("UIHeal");
+
+    }
+
+    public void playBuyOrgan()
+    {
+        playRandomizePitchSound("OrganSquish2", 1f, 1.5f);
+        
+    }
+
+    public void playBetOrgan() {
+        playRandomizePitchSound("OrganSquish2", 1f, 1.5f);
+        playRandomizePitchSound("OrganSquish3", 1.5f, 2f);
+    }
+
+    public void playUnbetOragan()
+    {
+        playRandomizePitchSound("OrganSquish2", 0.75f, 1f);
+        playRandomizePitchSound("OrganSquish3", 0.75f, 1f);
+    }
+
+    public void playUIButton() {
+        playRandomizePitchSound("UIButton", 0.75f, 0.90f);
+    }
+
+    public void playConfirmButton() {
+        playRandomizePitchSound("LockSound", 0.75f, 0.90f);
+        playUIButton();
+    }
+
+    public void playPlayerGetMoney() {
+        playRandomizePitchSound("PlayerGetMoney", 1f, 1.5f);
+    }
+
+    public void playPlayerDie() {
+        playSound("PlayerDie");
+    }
+
+    public void playInsureBet() {
+        playSound("BetShield");
+    }
+
+    public void playIncreaseOrganValue() {
+        playSound("IncreaseOrganValue");
     }
 }
 
