@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using System.Collections;
 
 
 public class CardView : MonoBehaviour, IPointerClickHandler
@@ -10,10 +11,20 @@ public class CardView : MonoBehaviour, IPointerClickHandler
     private bool flipped = false;
     private Card card;
 
+    private float tiltAmount = 15f;   
+    private float tiltSpeed = 0.3f;
+    private float randomOffset;
+
+    private float flipDuration = 0.15f;
+    private bool isFlipping = false;
+
+
+
     public void Setup(Card card) {
         this.card = card;
         cardImage.sprite = card.Sprite;
         Suit = card.Suit;
+        randomOffset = Random.Range(0f, Mathf.PI * 2f);
     }
 
     public void Setup(Card card, bool flipped) {
@@ -34,14 +45,55 @@ public class CardView : MonoBehaviour, IPointerClickHandler
     }
 
     public void flip() {
+
+        if (!isFlipping)
+        {
+            StartCoroutine(FlipRoutine());
+        }
+        
+    }
+
+    private IEnumerator FlipRoutine()
+    {
+        isFlipping = true;
+
+        float elapsed = 0f;
+        Vector3 originalScale = transform.localScale;
+
+        // First half: shrink to 0
+        while (elapsed < flipDuration / 2f)
+        {
+            elapsed += Time.deltaTime;
+            float scaleX = Mathf.Lerp(1f, 0f, elapsed / (flipDuration / 2f));
+            transform.localScale = new Vector3(scaleX, originalScale.y, originalScale.z);
+            yield return null;
+        }
+
+        // Swap sprite at midpoint
         if (flipped)
         {
             cardImage.sprite = card.Sprite;
         }
-        else {
+        else
+        {
             cardImage.sprite = BackSprite;
         }
-        flipped = !(flipped);
+        flipped = !flipped;
+
+
+        elapsed = 0f;
+
+        // Second half: expand back out
+        while (elapsed < flipDuration / 2f)
+        {
+            elapsed += Time.deltaTime;
+            float scaleX = Mathf.Lerp(0f, 1f, elapsed / (flipDuration / 2f));
+            transform.localScale = new Vector3(scaleX, originalScale.y, originalScale.z);
+            yield return null;
+        }
+
+        transform.localScale = originalScale;
+        isFlipping = false;
     }
 
     public int getValue() {
@@ -61,4 +113,12 @@ public class CardView : MonoBehaviour, IPointerClickHandler
     }
 
     public string Suit { get; private set; }
+
+    private void Update()
+    {
+        float tiltX = Mathf.Sin(Time.time * tiltSpeed + randomOffset) * tiltAmount;
+        float tiltY = Mathf.Cos(Time.time * tiltSpeed + randomOffset) * tiltAmount;
+
+        transform.rotation = Quaternion.Euler(tiltX, tiltY, 0f);
+    }
 }

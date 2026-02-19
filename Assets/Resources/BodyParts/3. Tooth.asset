@@ -16,4 +16,4 @@ MonoBehaviour:
   <MoneyValue>k__BackingField: 5
   <HealthCost>k__BackingField: 2
   <Amount>k__BackingField: 10
-  <sprite>k__BackingField: {fileID: -4515783960972485272, guid: c6875f1b95bc59d4a96552b67d0d9c40, type: 3}
+  <sprite>k__BackingField: {fileID: 21300000, guid: 280a7644f0cad8c4caf78f2633840aad, type: 3}
