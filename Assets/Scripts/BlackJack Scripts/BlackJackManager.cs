@@ -275,9 +275,11 @@ public class BlackJackManager : MonoBehaviour
 
             yield return new WaitForSeconds(0.5f);
 
-            debtManager.nextRound();
-            disablePlayButtons();
-            enableStartButton();
+            bool statement = debtManager.nextRound();
+            if (statement) {
+                disablePlayButtons();
+                enableStartButton();
+            }
 
             roundOver = false;
         }

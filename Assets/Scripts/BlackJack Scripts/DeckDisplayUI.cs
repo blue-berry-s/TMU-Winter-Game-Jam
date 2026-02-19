@@ -38,9 +38,9 @@ public class DeckDisplayUI : MonoBehaviour
     }
 
     public void closeViewDeck() {
-        if (cardContainer.childCount > 0)
+        foreach (Transform child in cardContainer)
         {
-            destroyCards(cardContainer);
+            Destroy(child.gameObject);
         }
         gameObject.SetActive(false);
     }

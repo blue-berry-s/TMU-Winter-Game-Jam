@@ -17,17 +17,19 @@ public class DebtManager : MonoBehaviour
 
     }
 
-    public void nextRound() {
+    public bool nextRound() {
         if (currentRound + 1 > maxRounds)
         {
             endWave();
+            return false;
         }
         else {
             if (playerWonLoss() == 1 && !gameDifficulty.cannotSkip) {
                 endWave();
-                return;
+                return false;
             }
             currentRound++;
+            return true;
         }
 
     }

@@ -89,6 +89,7 @@ public class ShopItemView : MonoBehaviour
                 shopItem.Apply();
                
             }
+            FindFirstObjectByType<SoundManager>().playRandomizePitchSound("ShopPurchase");
             moneyManager.decPlayerMoney(shopItem.getPrice());
             changeBoughtDisplay();
             shopUI.updateTexts();

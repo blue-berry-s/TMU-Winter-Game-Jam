@@ -9,6 +9,7 @@ TagManager:
   - ShopManagers
   - BodyPart
   - Inventory
+  - CoreManagers
   layers:
   - Default
   - TransparentFX

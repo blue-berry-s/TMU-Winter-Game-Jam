@@ -220,6 +220,63 @@ MonoBehaviour:
   canvasGroup: {fileID: 191411157}
   fadeInTime: 0.5
   fadeOutTime: 0.5
+--- !u!1 &597470885
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 597470886}
+  - component: {fileID: 597470887}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &597470886
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 597470885}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1753613864}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &597470887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 597470885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecb2df07125993a45a0c2edf6d83197c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoundManager
+  sounds:
+  - name: CardDraw
+    clip: {fileID: 8300000, guid: c44909db7ee47ba48a486968f8728715, type: 3}
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: ShopPurchase
+    clip: {fileID: 8300000, guid: c8dc20dcd0371fc4ea9ee622e80897cf, type: 3}
+    volume: 0.8
+    pitch: 2
+    source: {fileID: 0}
+    loop: 0
 --- !u!1 &897899909
 GameObject:
   m_ObjectHideFlags: 0
@@ -485,7 +542,7 @@ GameObject:
   - component: {fileID: 1753613864}
   m_Layer: 0
   m_Name: --- MANAGERS ---
-  m_TagString: Untagged
+  m_TagString: CoreManagers
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -505,6 +562,7 @@ Transform:
   m_Children:
   - {fileID: 1049876217}
   - {fileID: 1105967732}
+  - {fileID: 597470886}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1757946171
