@@ -2,7 +2,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Shop/Effects/Increase Body Part Value")]
 public class IncBodyValueEffect : ShopItem
 {
-    public BodyPart bodyPart;
+    private BodyPart bodyPart;
     private int amount;
     BodyPartManager bodyPartManager;
 
@@ -10,12 +10,15 @@ public class IncBodyValueEffect : ShopItem
 
     public override void Setup()
     {
-        BodyPartManager bodyPartManager = getManager().GetComponentInChildren<BodyPartManager>();
+        bodyPartManager = getManager().GetComponentInChildren<BodyPartManager>();
         bodyPart = bodyPartManager.getRandomPart();
+        
         amount = Mathf.Max(1, Mathf.RoundToInt(bodyPart.HealthCost * 0.25f));
     }
     public override bool Apply()
     {
+        
+        FindFirstObjectByType<SoundManager>().playIncreaseOrganValue();
         bodyPartManager.increaseBodyPartValue(bodyPart, amount);
         return true;
     }

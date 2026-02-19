@@ -79,6 +79,7 @@ public class ShopManagementUI : MonoBehaviour
 
     public void switchToGame()
     {
+        FindFirstObjectByType<SoundManager>().playUIButton();
         SceneController.Instance
             .newTransition()
             .load(SceneDatabse.Slots.SessionContent, SceneDatabse.Scenes.BlackJack, setActive: true)
@@ -88,12 +89,14 @@ public class ShopManagementUI : MonoBehaviour
 
     public void switchToForceGame()
     {
+        
         difficulty.triggerCannotSkip();
         switchToGame();
     }
 
     public void callSkipLevel()
     {
+        FindFirstObjectByType<SoundManager>().playUIButton();
         StartCoroutine(skipNextLevel());
     }
 

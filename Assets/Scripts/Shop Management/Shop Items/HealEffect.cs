@@ -5,16 +5,17 @@ public class HealEffect : ShopItem
 {
     private int amount;
     private HealthManager healthManager;
-    private int minPrice;
+    private MoneyManager moneyManager;
     private int priceCheck;
 
     public override void Setup()
     {
         healthManager = getManager().GetComponentInChildren<HealthManager>();
-        MoneyManager moneyManager = getManager().GetComponentInChildren<MoneyManager>();
-        float percentage = Random.Range(0.1f, 0.5f);
-        priceCheck = Mathf.RoundToInt(percentage* moneyManager.getPlayerMoney());
-        amount = Mathf.RoundToInt(percentage*healthManager.getMaxHealth());
+        moneyManager = getManager().GetComponentInChildren<MoneyManager>();
+        setAmounts();
+
+
+
 
     }
     public override bool Apply()
@@ -25,11 +26,43 @@ public class HealEffect : ShopItem
 
     public override int getPrice()
     {
-        return Mathf.Max(10, priceCheck);
+        if (moneyManager.getPlayerMoney() < 20)
+        {
+            return 5;
+        }
+        else
+        {
+            return Mathf.Max(5, priceCheck);
+        }
+        
     }
 
     public override string getName()
     {
         return "Heal " + amount.ToString();
+    }
+
+    private void setAmounts() {
+
+        float percentage = Random.Range(0.1f, 0.75f);
+        priceCheck = Mathf.RoundToInt(percentage * moneyManager.getPlayerMoney());
+
+
+        float money = moneyManager.getPlayerMoney();
+        int maxHealth = healthManager.getMaxHealth(); // should be 30
+
+        // Prevent divide by zero
+        if (money <= 0f)
+        {
+            amount = 0;
+        }
+        else
+        {
+            float priceRatio = (float)priceCheck / money;
+            amount = Mathf.RoundToInt(priceRatio * maxHealth);
+        }
+
+        // Final safety clamp
+        amount = Mathf.Clamp(amount, 0, maxHealth);
     }
 }

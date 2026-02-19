@@ -69,6 +69,7 @@ public class CardView : MonoBehaviour, IPointerClickHandler
             yield return null;
         }
 
+        FindFirstObjectByType<SoundManager>().playRandomizePitchSound("CardFlip");
         // Swap sprite at midpoint
         if (flipped)
         {

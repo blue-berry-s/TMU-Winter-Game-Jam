@@ -13,6 +13,7 @@ public class BadEndManager : MonoBehaviour
     }
 
     public void restartGame() {
+        FindFirstObjectByType<SoundManager>().playUIButton();
         SceneController.Instance
             .newTransition()
             .unload(SceneDatabse.Scenes.BadEnd)

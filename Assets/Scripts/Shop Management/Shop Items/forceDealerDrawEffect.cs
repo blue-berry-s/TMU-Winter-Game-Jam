@@ -13,7 +13,7 @@ public class forceDealerDrawEffect : ShopItem
         Debug.Log("B:" + blackJackManager.dealerCardCount());
         if (blackJackManager.dealerCardCount() > 0)
         {
-            blackJackManager.DealerDrawCard(false);
+            blackJackManager.ForceDealerDrawCard();
             return true;
         }
         else {

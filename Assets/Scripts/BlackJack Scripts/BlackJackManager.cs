@@ -90,6 +90,8 @@ public class BlackJackManager : MonoBehaviour
                 callPlayerStand();
             }
         }
+
+        
     }
 
     //Set up the cards 
@@ -137,6 +139,13 @@ public class BlackJackManager : MonoBehaviour
         GameObject obj = cardVisualManager.spawnCard(flipped, card);
         dealerCards.Add(obj);
         cardVisualManager.DrawCardAnimation(dealerCards, maxDealerHandSize, dealerSplineContainer);
+    }
+
+    public void ForceDealerDrawCard() {
+        Card card = DrawCard();
+        GameObject obj = cardVisualManager.spawnCard(false, card);
+        dealerCards.Add(obj);
+        cardVisualManager.DrawCardAnimation(dealerCards, maxDealerHandSize, dealerSplineContainer);
         if (isBust(dealerCards)) {
             flipDealerCard();
             StartCoroutine(compareValues());
@@ -146,6 +155,8 @@ public class BlackJackManager : MonoBehaviour
     public void discardPlayerCard() {
         DiscardedCards.Add(playerCards[playerCards.Count - 1].GetComponent<CardView>().getCard());
         StartCoroutine( cardVisualManager.DiscardCardAnimation(playerCards[playerCards.Count - 1], 0.25f));
+        playerCards.Remove(playerCards[playerCards.Count - 1]);
+
     }
 
 
@@ -163,6 +174,7 @@ public class BlackJackManager : MonoBehaviour
         enablePlayButtons();
         disableStartButton();
 
+        
         //Game logic (player draws + dealer gets card)
         PlayerDrawCard();
         StartCoroutine(setUpDealer());
@@ -216,6 +228,7 @@ public class BlackJackManager : MonoBehaviour
             {
                 DealerDrawCard(false);
                 dealerValue = calcValue(dealerCards);
+                busted = isBust(dealerCards);
                 yield return new WaitForSeconds(1f);
             }
 
@@ -258,6 +271,8 @@ public class BlackJackManager : MonoBehaviour
             }
             else if (dealerValue > 21)
             {
+                
+                FindFirstObjectByType<SoundManager>().playPlayerGetMoney();
                 playerWon("Dealer has busted");
             }
             else if (playerValue < dealerValue)
@@ -266,6 +281,8 @@ public class BlackJackManager : MonoBehaviour
             }
             else if (playerValue > dealerValue)
             {
+                
+                FindFirstObjectByType<SoundManager>().playPlayerGetMoney();
                 playerWon("More than dealer");
             }
             else
@@ -275,9 +292,11 @@ public class BlackJackManager : MonoBehaviour
 
             yield return new WaitForSeconds(0.5f);
 
-            debtManager.nextRound();
-            disablePlayButtons();
-            enableStartButton();
+            bool statement = debtManager.nextRound();
+            if (statement) {
+                disablePlayButtons();
+                enableStartButton();
+            }
 
             roundOver = false;
         }
@@ -359,6 +378,7 @@ public class BlackJackManager : MonoBehaviour
 
     public void playerLost(string reason) {
         if (bettingManager.betInsured) {
+            FindFirstObjectByType<SoundManager>().playRandomizePitchSound("ShopPurchase");
             moneyManager.incPlayerMoney(Mathf.RoundToInt(bettingManager.betAmount * 0.5f));
         }
         healthManager.decPlayerHealth(bettingManager.betHealth);
