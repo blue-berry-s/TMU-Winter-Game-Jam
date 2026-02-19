@@ -246,6 +246,7 @@ public class BlackJackManager : MonoBehaviour
 
     IEnumerator compareValues()
     {
+        yield return new WaitForSeconds(0.4f);
         if (!roundOver) {
             setRoundOver();
             int playerValue = calcValue(playerCards);
