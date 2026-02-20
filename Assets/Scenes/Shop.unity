@@ -1025,7 +1025,6 @@ GameObject:
   - component: {fileID: 1214556066}
   - component: {fileID: 1214556068}
   - component: {fileID: 1214556067}
-  - component: {fileID: 1214556069}
   m_Layer: 5
   m_Name: DialogBox
   m_TagString: Untagged
@@ -1050,8 +1049,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 198.83, y: -75.60199}
-  m_SizeDelta: {x: -1045.2, y: -970.228}
+  m_AnchoredPosition: {x: 198.85, y: -102.218}
+  m_SizeDelta: {x: -1045.2, y: -916.995}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1214556067
 MonoBehaviour:
@@ -1091,35 +1090,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1214556065}
   m_CullTransparentMesh: 1
---- !u!114 &1214556069
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1214556065}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 735cf22d51856d347b34b8d3af53e8e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DialogueManager
-  BoughItemLines:
-  - Pleasure doing business
-  - I hope it serves you well
-  - You're my favourite customer
-  NotEnoughMoneyLines:
-  - Looks like you don't have quite enough
-  - Come back when you have more coins to spend
-  - No Chairty from me today
-  BeginningDialog:
-  - Looks like you owe quite some debt to some serious people
-  - I know some people who can help
-  - But you won't get the money for free
-  - I hope you brushed up on the rules of Black Jack...
-  - Because your life is on the line
-  dialogueText: {fileID: 1184459076}
-  Currentlines: []
-  textSpeed: 0.03
 --- !u!1 &1267392783
 GameObject:
   m_ObjectHideFlags: 0
@@ -2497,6 +2467,53 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!1 &1895434670
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1895434671}
+  - component: {fileID: 1895434672}
+  m_Layer: 0
+  m_Name: DialogueManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1895434671
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1895434670}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2083160609}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1895434672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1895434670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37c2844d2acdc514abc85843214a4e07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueManager
+  dialogueText: {fileID: 1184459076}
+  textSpeed: 0.02
+  dialogueCanvas: {fileID: 1214556065}
 --- !u!1 &1902504053
 GameObject:
   m_ObjectHideFlags: 0
@@ -2592,6 +2609,7 @@ Transform:
   m_Children:
   - {fileID: 1288264379}
   - {fileID: 161152683}
+  - {fileID: 1895434671}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2134100064

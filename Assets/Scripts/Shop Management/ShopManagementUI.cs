@@ -101,19 +101,30 @@ public class ShopManagementUI : MonoBehaviour
     }
 
     private IEnumerator skipNextLevel() {
-        SceneController.Instance
+
+        bool checkWin = difficulty.nextLevel();
+        if (checkWin)
+        {
+            SceneController.Instance
             .newTransition()
             .load(SceneDatabse.Slots.SessionContent, SceneDatabse.Scenes.Shop, setActive: false)
             .withOverlay()
             .Perform();
-        SceneController.Instance
-            .newTransition()
-            .load(SceneDatabse.Slots.SessionContent, SceneDatabse.Scenes.Shop, setActive: true)
-            .withOverlay()
-            .Perform();
-        yield return new WaitForSeconds(0.2f);
-        moneyManager.decPlayerMoney(difficulty.getDebt());
-        difficulty.nextLevel();
+
+
+            SceneController.Instance
+                .newTransition()
+                .load(SceneDatabse.Slots.SessionContent, SceneDatabse.Scenes.Shop, setActive: true)
+                .withOverlay()
+                .Perform();
+            yield return new WaitForSeconds(0.2f);
+            moneyManager.decPlayerMoney(difficulty.getDebt());
+        }
+        else {
+            moneyManager.decPlayerMoney(difficulty.getDebt());
+        }
+        
+        
 
     }
 }
