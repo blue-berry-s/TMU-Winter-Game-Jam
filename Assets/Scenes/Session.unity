@@ -169,33 +169,34 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: -0
-      outSlope: -0
+      inSlope: 47.872467
+      outSlope: 47.872467
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.20234424
+      outWeight: 0.33262715
     - serializedVersion: 3
-      time: 3
-      value: 100
-      inSlope: -0.003965566
-      outSlope: -0.003965566
-      tangentMode: 0
+      time: 1.0161041
+      value: 21.389587
+      inSlope: 46.548885
+      outSlope: 76.83537
+      tangentMode: 1
       weightedMode: 0
-      inWeight: 0.08195778
-      outWeight: 0
+      inWeight: 0.4509425
+      outWeight: 0.33333334
     - serializedVersion: 3
-      time: 6
-      value: 500
-      inSlope: -0
+      time: 7
+      value: 666
+      inSlope: 28.824373
       outSlope: 0
       tangentMode: 1
       weightedMode: 0
-      inWeight: 0.08844662
+      inWeight: 0.06567226
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  maxLevel: 7
 --- !u!1 &1300915712
 GameObject:
   m_ObjectHideFlags: 0
@@ -411,7 +412,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a894c56a08ee03e41806c08468317873, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MoneyManager
-  playerMoney: 50
+  playerMoney: 0
 --- !u!1 &2029094184
 GameObject:
   m_ObjectHideFlags: 0

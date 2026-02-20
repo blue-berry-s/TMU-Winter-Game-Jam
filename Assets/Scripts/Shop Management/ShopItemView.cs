@@ -95,6 +95,15 @@ public class ShopItemView : MonoBehaviour
                 shopItem.Apply();
 
             }
+
+            //Sound + dialogue
+            if (shopItem.GetType().ToString() == "gainPartEffect") {
+                FindFirstObjectByType<DialogueManager>().BoughtOrgan();
+            }
+            else {
+                FindFirstObjectByType<DialogueManager>().BoughtItem();
+            }
+            
             FindFirstObjectByType<SoundManager>().playRandomizePitchSound("ShopPurchase");
             moneyManager.decPlayerMoney(shopItem.getPrice());
             changeBoughtDisplay();
@@ -112,10 +121,12 @@ public class ShopItemView : MonoBehaviour
 
             }
             else {
+                FindFirstObjectByType<DialogueManager>().NotEnoughMoney();
                 FindFirstObjectByType<SoundManager>().playUINotAllowed();
             }
         }
         else {
+            FindFirstObjectByType<DialogueManager>().NotEnoughMoney();
             FindFirstObjectByType<SoundManager>().playUINotAllowed();
         }
 

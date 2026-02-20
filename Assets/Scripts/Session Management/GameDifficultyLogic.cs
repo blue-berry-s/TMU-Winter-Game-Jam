@@ -7,15 +7,36 @@ public class GameDifficultyLogic : MonoBehaviour
 
     [SerializeField] private AnimationCurve DebtDifficulty;
     public bool cannotSkip { get; private set; }
+    public bool wonGame { get; private set; }
+
+    public int maxLevel = 7;
 
     private void Start()
     {
+        wonGame = false;
         calcDifficulty();
         cannotSkip = false;
     }
 
-    public void nextLevel() {
+    private void Update()
+    {
+        
+        if (currentLevel > 1 && !(wonGame)) {
+            Debug.Log("HERE");
+            wonGame = true;
+            winGame();
+        }
+    }
+
+    public bool nextLevel() {
         currentLevel++;
+        if (currentLevel > maxLevel)
+        {
+            return false;
+        }
+        else {
+            return true;
+        }
 
     }
     public void calcDifficulty() {
@@ -37,6 +58,20 @@ public class GameDifficultyLogic : MonoBehaviour
 
     public void stopCannotSkip() {
         cannotSkip = true;
+    }
+
+    public void winGame() {
+        //Debug.Log("HERE B");
+        SceneController.Instance
+            .newTransition()
+            .load(SceneDatabse.Slots.SessionContent, SceneDatabse.Scenes.GoodEnd, setActive: true)
+            .withOverlay()
+            .withClearUnusedAssets()
+            .Perform();
+    }
+
+    public void resetWin() {
+        wonGame = false;
     }
 
 

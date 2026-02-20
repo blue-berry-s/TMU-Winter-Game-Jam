@@ -58,15 +58,21 @@ public class DebtManager : MonoBehaviour
         }
         else if (!gameDifficulty.cannotSkip && moneyManager.getPlayerMoney() >= gameDifficulty.currentDebt)
         {
-            gameDifficulty.nextLevel();
             moneyManager.decPlayerMoney(gameDifficulty.currentDebt);
-            switchToShop();
+            bool checkWin = gameDifficulty.nextLevel();
+            if (checkWin) {
+                switchToShop();
+            }
+            
         }
         else if (gameDifficulty.cannotSkip && moneyManager.getPlayerMoney() >= gameDifficulty.currentDebt)
         {
-            gameDifficulty.nextLevel();
             moneyManager.decPlayerMoney(gameDifficulty.currentDebt);
-            switchToShop();
+            bool checkWin = gameDifficulty.nextLevel();
+            if (checkWin) {
+                switchToShop();
+            }
+            
         }
         else {
             Debug.Log("ERROR");
