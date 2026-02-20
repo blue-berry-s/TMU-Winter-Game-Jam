@@ -8,6 +8,9 @@ public class ShopItemView : MonoBehaviour
     [SerializeField] TMP_Text CostText;
     [SerializeField] TMP_Text NameText;
     [SerializeField] Image Icon;
+    [SerializeField] Image coinImage;
+    [SerializeField] GameObject coinCostContainer;
+    [SerializeField] Sprite bloodSprite;
     MoneyManager moneyManager;
     HealthManager healthManager;
     ShopManagementUI shopUI;
@@ -33,6 +36,7 @@ public class ShopItemView : MonoBehaviour
         shopItem.Setup();
         if (shopItem.usesHealth)
         {
+            coinImage.sprite = bloodSprite;
             CostText.text = shopItem.getPrice().ToString();
         }
         else {
@@ -67,6 +71,8 @@ public class ShopItemView : MonoBehaviour
         button.GetComponentInChildren<TMP_Text>().text = "Use";
         CostText.gameObject.SetActive(false);
         NameText.gameObject.SetActive(false);
+        coinImage.gameObject.SetActive(false);
+        coinCostContainer.SetActive(false);
         button.onClick.RemoveAllListeners();
         button.onClick.AddListener(UseItem);
     }
