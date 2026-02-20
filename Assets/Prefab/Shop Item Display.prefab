@@ -595,6 +595,7 @@ MonoBehaviour:
   Icon: {fileID: 5225221189058019144}
   coinImage: {fileID: 2039468849820126716}
   coinCostContainer: {fileID: 1354261238738995925}
+  bloodSprite: {fileID: -2480602300891653932, guid: 8faeee6e1e9c4014a9d25bcf6a35d9dc, type: 3}
 --- !u!1 &6180346238416410434
 GameObject:
   m_ObjectHideFlags: 0
