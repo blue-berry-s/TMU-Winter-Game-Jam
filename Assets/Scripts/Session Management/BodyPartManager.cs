@@ -70,10 +70,7 @@ public class BodyPartManager : MonoBehaviour
     }
 
     public void increaseBodyPartValue(BodyPart part, int amount) {
-
-        
-        playerBodyInventory.Find(p => p.Name == part.Name).MoneyValue += amount;
-        
+        playerBodyInventory.Find(p => p.Name == part.Name).Amount += amount;
     }
 
     public void decreaseBodyPartAmount(BodyPart part) {

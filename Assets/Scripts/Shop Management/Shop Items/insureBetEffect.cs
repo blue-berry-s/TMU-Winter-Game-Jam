@@ -9,7 +9,6 @@ public class insureBetEffect : ShopItem
     }
     public override bool Apply()
     {
-        FindFirstObjectByType<SoundManager>().playInsureBet();
         bettingManager = GameObject.FindGameObjectWithTag("BlackJackManagers").GetComponentInChildren<BettingManager>();
         bettingManager.insureBet();
         return true;

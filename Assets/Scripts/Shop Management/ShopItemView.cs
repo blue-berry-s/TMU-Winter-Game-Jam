@@ -8,9 +8,6 @@ public class ShopItemView : MonoBehaviour
     [SerializeField] TMP_Text CostText;
     [SerializeField] TMP_Text NameText;
     [SerializeField] Image Icon;
-    [SerializeField] Image coinImage;
-    [SerializeField] GameObject coinCostContainer;
-    [SerializeField] Sprite bloodSprite;
     MoneyManager moneyManager;
     HealthManager healthManager;
     ShopManagementUI shopUI;
@@ -36,7 +33,6 @@ public class ShopItemView : MonoBehaviour
         shopItem.Setup();
         if (shopItem.usesHealth)
         {
-            coinImage.sprite = bloodSprite;
             CostText.text = shopItem.getPrice().ToString();
         }
         else {
@@ -71,8 +67,6 @@ public class ShopItemView : MonoBehaviour
         button.GetComponentInChildren<TMP_Text>().text = "Use";
         CostText.gameObject.SetActive(false);
         NameText.gameObject.SetActive(false);
-        coinImage.gameObject.SetActive(false);
-        coinCostContainer.SetActive(false);
         button.onClick.RemoveAllListeners();
         button.onClick.AddListener(UseItem);
     }
@@ -83,7 +77,7 @@ public class ShopItemView : MonoBehaviour
 
     public void BuyItem()
     {
-
+       
         if (moneyManager.getPlayerMoney() >= shopItem.getPrice())
         {
             if (shopItem.forInventory && !inventory.inventoryFull())
@@ -93,41 +87,21 @@ public class ShopItemView : MonoBehaviour
             else if (!shopItem.forInventory)
             {
                 shopItem.Apply();
-
+               
             }
-
-            //Sound + dialogue
-            if (shopItem.GetType().ToString() == "gainPartEffect") {
-                FindFirstObjectByType<DialogueManager>().BoughtOrgan();
-            }
-            else {
-                FindFirstObjectByType<DialogueManager>().BoughtItem();
-            }
-            
-            FindFirstObjectByType<SoundManager>().playRandomizePitchSound("ShopPurchase");
             moneyManager.decPlayerMoney(shopItem.getPrice());
             changeBoughtDisplay();
             shopUI.updateTexts();
         }
-        else if (shopItem.usesHealth)
-        {
-
-            if (healthManager.getPlayerHealth() > shopItem.getPrice())
-            {
-
+        else if (shopItem.usesHealth) {
+            
+            if (healthManager.getPlayerHealth() > shopItem.getPrice()) {
+                
                 shopItem.Apply();
                 changeBoughtDisplay();
                 shopUI.updateTexts();
-
+                
             }
-            else {
-                FindFirstObjectByType<DialogueManager>().NotEnoughMoney();
-                FindFirstObjectByType<SoundManager>().playUINotAllowed();
-            }
-        }
-        else {
-            FindFirstObjectByType<DialogueManager>().NotEnoughMoney();
-            FindFirstObjectByType<SoundManager>().playUINotAllowed();
         }
 
         shopUI.updateTexts();
@@ -135,21 +109,16 @@ public class ShopItemView : MonoBehaviour
 
     public void UseItem() {
         GameObject test = GameObject.FindGameObjectWithTag("BlackJackManagers");
-        if (test != null)
-        {
+        if (test != null) {
             if (shopItem.Apply())
             {
                 InventoryDisplay inventoryUI = GameObject.FindGameObjectWithTag("Inventory").GetComponentInChildren<InventoryDisplay>();
                 inventory.deleteFromInventory(shopItem);
             }
-            else
-            {
-                FindFirstObjectByType<SoundManager>().playUINotAllowed();
+            else {
                 return;
             }
-        }
-        else {
-            FindFirstObjectByType<SoundManager>().playUINotAllowed();
+            
         }
     }
 

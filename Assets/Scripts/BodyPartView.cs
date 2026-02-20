@@ -38,7 +38,6 @@ public class BodyPartView : MonoBehaviour
 
     public void betOrgan()
     {
-        FindFirstObjectByType<SoundManager>().playBetOrgan();
         bettingManager.betBodyPart(this);
         button.onClick.RemoveAllListeners();
         button.onClick.AddListener(unbetOrgan);
@@ -48,7 +47,7 @@ public class BodyPartView : MonoBehaviour
 
     public void unbetOrgan()
     {
-        FindFirstObjectByType<SoundManager>().playUnbetOragan();
+       
         bettingManager.unbetBodyPart(this);
         button.onClick.RemoveAllListeners();
         button.onClick.AddListener(betOrgan);

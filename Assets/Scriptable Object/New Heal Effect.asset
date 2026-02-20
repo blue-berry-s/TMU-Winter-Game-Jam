@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: New Heal Effect
   m_EditorClassIdentifier: Assembly-CSharp::HealEffect
   itemName: 
-  icon: {fileID: 6949829549555119988, guid: 09be3d38638083b4ea73ac289dc2844f, type: 3}
+  icon: {fileID: -5680954219732530093, guid: e36cf56a1ffc9ed4d968dd37699b41b6, type: 3}
   price: 0
   forInventory: 0
-  usesHealth: 0

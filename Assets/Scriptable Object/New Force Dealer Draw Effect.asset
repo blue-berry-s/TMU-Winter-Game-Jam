@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: New Force Dealer Draw Effect
   m_EditorClassIdentifier: Assembly-CSharp::forceDealerDrawEffect
   itemName: Force Dealer Draw
-  icon: {fileID: -2873619594944697739, guid: 9d8e59ebe63c2384183ee98efdb5008d, type: 3}
-  price: 10
+  icon: {fileID: 4880691799782015441, guid: e36cf56a1ffc9ed4d968dd37699b41b6, type: 3}
+  price: 15
   forInventory: 1
   usesHealth: 0

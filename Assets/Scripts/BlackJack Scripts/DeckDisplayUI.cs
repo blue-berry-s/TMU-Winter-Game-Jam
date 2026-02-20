@@ -38,10 +38,9 @@ public class DeckDisplayUI : MonoBehaviour
     }
 
     public void closeViewDeck() {
-        FindFirstObjectByType<SoundManager>().playRandomizePitchSound("CardsShuffle", 0.75f, 0.75f);
-        foreach (Transform child in cardContainer)
+        if (cardContainer.childCount > 0)
         {
-            Destroy(child.gameObject);
+            destroyCards(cardContainer);
         }
         gameObject.SetActive(false);
     }

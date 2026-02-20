@@ -23,7 +23,7 @@ public class HealthForMoneyEffect : ShopItem
     }
     public override bool Apply()
     {
-           
+        
         healthManager.decPlayerHealth(Healthamount);
         moneyManager.incPlayerMoney(moneyAmount);
         return true;

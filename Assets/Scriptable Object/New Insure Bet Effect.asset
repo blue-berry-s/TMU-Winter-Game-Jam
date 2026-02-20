@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: New Insure Bet Effect
   m_EditorClassIdentifier: Assembly-CSharp::insureBetEffect
   itemName: Insure 50% Bet
-  icon: {fileID: 666223732270364929, guid: 11bb2a2930e7f8344bae126614160413, type: 3}
-  price: 25
+  icon: {fileID: -410955009, guid: e36cf56a1ffc9ed4d968dd37699b41b6, type: 3}
+  price: 50
   forInventory: 1
   usesHealth: 0

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 831350e26f1ddfa43a8812af04dba6bf, type: 3}
   m_Name: Spades_7
   m_EditorClassIdentifier: Assembly-CSharp::CardData
-  <Sprite>k__BackingField: {fileID: 7236530895322187553, guid: fd916d867ecd19343a22fa944c33cb8d, type: 3}
+  <Sprite>k__BackingField: {fileID: 21300000, guid: 744e1994008e7fb45a14396849bbd73a, type: 3}
   <Value>k__BackingField: 7
   <Suit>k__BackingField: Spade
   <SecondValue>k__BackingField: 7

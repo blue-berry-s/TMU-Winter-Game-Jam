@@ -54,19 +54,14 @@ public class ShopManager : MonoBehaviour
     }
 
     public void purchaseRandomize() {
-        if (moneyManager.getPlayerMoney() >= reRollCost)
-        {
-            FindFirstObjectByType<SoundManager>().playRandomizePitchSound("ShopPurchase", 0.5f, 1.5f);
-            FindFirstObjectByType<SoundManager>().playRandomizePitchSound("DiceRoll2", 0.5f, 1.5f);
+        if (moneyManager.getPlayerMoney() >= reRollCost) {
             moneyManager.decPlayerMoney(reRollCost);
             rerollAmount++;
-            reRollCost = Mathf.RoundToInt(0.5f * rerollAmount + initialRerollCost);
+            reRollCost = Mathf.RoundToInt(0.5f*rerollAmount + initialRerollCost);
             randomizeShop();
             shopUI.updateTexts();
             shopUI.updateRerollButton(reRollCost);
-        }
-        else {
-            FindFirstObjectByType<SoundManager>().playUINotAllowed();
+
         }
         
 

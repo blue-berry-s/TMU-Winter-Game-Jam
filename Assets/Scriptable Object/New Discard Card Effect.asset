@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: New Discard Card Effect
   m_EditorClassIdentifier: Assembly-CSharp::discardCardEffect
   itemName: Discard Last Card
-  icon: {fileID: -328800548914082662, guid: 0e95e1239f9265a44a3803d78416def7, type: 3}
-  price: 5
+  icon: {fileID: -3657468769202352631, guid: e36cf56a1ffc9ed4d968dd37699b41b6, type: 3}
+  price: 10
   forInventory: 1
   usesHealth: 0

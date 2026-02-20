@@ -23,21 +23,17 @@ public class HealthManager : MonoBehaviour
         {
             playerHealth += amount;
         }
-        FindFirstObjectByType<SoundManager>().playPlayerHeal();
     }
 
     public void decPlayerHealth(int amount)
     {
         if (playerHealth - amount <= 0)
         {
-            FindFirstObjectByType<SoundManager>().stopSoundtrack();
-            FindFirstObjectByType<SoundManager>().playPlayerDie();
             switchToLost();
             Debug.Log("You DIED");
         }
         else
         {
-            FindFirstObjectByType<SoundManager>().playPlayerHurt();
             playerHealth -= amount;
         }
     }

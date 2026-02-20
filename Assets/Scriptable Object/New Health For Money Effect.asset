@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: New Health For Money Effect
   m_EditorClassIdentifier: Assembly-CSharp::HealthForMoneyEffect
   itemName: Sacrifice for money
-  icon: {fileID: 6232691814327703161, guid: c8183ec4f5e3622489bcc1cc67a41567, type: 3}
+  icon: {fileID: -1787711098, guid: e36cf56a1ffc9ed4d968dd37699b41b6, type: 3}
   price: 0
   forInventory: 0
-  usesHealth: 0

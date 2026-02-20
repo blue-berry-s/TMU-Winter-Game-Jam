@@ -15,7 +15,6 @@ public class gainPartEffect : ShopItem
     //Probably need to switch the logic so that it caluclates the amount to increase (deprecating in amount)
     public override bool Apply()
     {
-        FindFirstObjectByType<SoundManager>().playBuyOrgan();
         bodyPartManager.addBodyPart(bodyPart);
         return true;
     }

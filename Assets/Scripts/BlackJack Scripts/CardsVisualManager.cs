@@ -15,13 +15,6 @@ public class CardsVisualManager : MonoBehaviour
     [SerializeField] private Transform spawnPoint;
     [SerializeField] GameObject discardPile;
 
-    private SoundManager soundManager;
-
-    private void Start()
-    {
-        soundManager = GameObject.FindGameObjectWithTag("CoreManagers").GetComponentInChildren<SoundManager>();
-    }
-
     public GameObject spawnCard(bool flipped, Card drawnCard)
     {
             CardView view = Instantiate(cardView, spawnPoint.position, spawnPoint.rotation);
@@ -32,12 +25,11 @@ public class CardsVisualManager : MonoBehaviour
     public void DrawCardAnimation(List<GameObject> handCardCount, int maxHandSize, SplineContainer splineContainer)
     {
         if (handCardCount.Count == 0) return;
-        float cardSpacing = 1f / maxHandSize;
+        float cardSpacing = 2f / maxHandSize;
         float firstCardPosition = 0.5f - (handCardCount.Count - 1) * cardSpacing / 2;
         Spline spline = splineContainer.Spline;
         for (int i = 0; i < handCardCount.Count; i++)
         {
-            drawCardSound();
             float p = firstCardPosition + i * cardSpacing;
             Vector3 splinePosition = spline.EvaluatePosition(p);
             Vector3 forward = spline.EvaluateTangent(p);
@@ -54,7 +46,6 @@ public class CardsVisualManager : MonoBehaviour
     {
         for (int i = 0; i < handCardCount.Count; i++)
         {
-            drawCardSound();
             handCardCount[i].transform.DOMove(discardPoint.position, 0.2f);
             handCardCount[i].transform.DOLocalRotateQuaternion(discardPoint.rotation, 0.2f);
             yield return new WaitForSeconds(0.1f);
@@ -66,7 +57,6 @@ public class CardsVisualManager : MonoBehaviour
 
     public IEnumerator DiscardCardAnimation(GameObject card, float visualTime)
     {
-        drawCardSound();
         card.transform.DOMove(discardPoint.position, visualTime);
         card.transform.DOLocalRotateQuaternion(discardPoint.rotation, visualTime);
         yield return new WaitForSeconds(visualTime-0.2f);
@@ -76,13 +66,9 @@ public class CardsVisualManager : MonoBehaviour
 
     public void MoveCardAnimation(GameObject card, Transform position,float visualTime)
     {
-       
         card.transform.DOMove(position.position, visualTime);
         card.transform.DOLocalRotateQuaternion(position.rotation, visualTime);
     }
 
-    private void drawCardSound() {
-        soundManager.playRandomizePitchSound("CardDraw", 1.5f, 3f);
-    }
 
 }

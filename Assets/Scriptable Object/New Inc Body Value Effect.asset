@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: New Inc Body Value Effect
   m_EditorClassIdentifier: Assembly-CSharp::IncBodyValueEffect
   itemName: 
-  icon: {fileID: 2988218154985647104, guid: f0f3790048686b54d8e900c102fcbb7d, type: 3}
+  icon: {fileID: 944768425702716867, guid: e36cf56a1ffc9ed4d968dd37699b41b6, type: 3}
   price: 0
   forInventory: 0
-  usesHealth: 0

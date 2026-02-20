@@ -79,7 +79,6 @@ public class ShopManagementUI : MonoBehaviour
 
     public void switchToGame()
     {
-        FindFirstObjectByType<SoundManager>().playUIButton();
         SceneController.Instance
             .newTransition()
             .load(SceneDatabse.Slots.SessionContent, SceneDatabse.Scenes.BlackJack, setActive: true)
@@ -89,42 +88,29 @@ public class ShopManagementUI : MonoBehaviour
 
     public void switchToForceGame()
     {
-        
         difficulty.triggerCannotSkip();
         switchToGame();
     }
 
     public void callSkipLevel()
     {
-        FindFirstObjectByType<SoundManager>().playUIButton();
         StartCoroutine(skipNextLevel());
     }
 
     private IEnumerator skipNextLevel() {
-
-        bool checkWin = difficulty.nextLevel();
-        if (checkWin)
-        {
-            SceneController.Instance
+        SceneController.Instance
             .newTransition()
             .load(SceneDatabse.Slots.SessionContent, SceneDatabse.Scenes.Shop, setActive: false)
             .withOverlay()
             .Perform();
-
-
-            SceneController.Instance
-                .newTransition()
-                .load(SceneDatabse.Slots.SessionContent, SceneDatabse.Scenes.Shop, setActive: true)
-                .withOverlay()
-                .Perform();
-            yield return new WaitForSeconds(0.2f);
-            moneyManager.decPlayerMoney(difficulty.getDebt());
-        }
-        else {
-            moneyManager.decPlayerMoney(difficulty.getDebt());
-        }
-        
-        
+        SceneController.Instance
+            .newTransition()
+            .load(SceneDatabse.Slots.SessionContent, SceneDatabse.Scenes.Shop, setActive: true)
+            .withOverlay()
+            .Perform();
+        yield return new WaitForSeconds(0.2f);
+        moneyManager.decPlayerMoney(difficulty.getDebt());
+        difficulty.nextLevel();
 
     }
 }

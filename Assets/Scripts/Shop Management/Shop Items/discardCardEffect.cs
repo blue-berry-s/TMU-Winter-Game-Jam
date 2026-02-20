@@ -10,6 +10,7 @@ public class discardCardEffect : ShopItem
     public override bool Apply()
     {
         blackJackManager = GameObject.FindGameObjectWithTag("BlackJackManagers").GetComponentInChildren<BlackJackManager>();
+        Debug.Log("A:" + blackJackManager.playerCardCount());
         if (blackJackManager.playerCardCount() > 0)
         {
             blackJackManager.discardPlayerCard();
