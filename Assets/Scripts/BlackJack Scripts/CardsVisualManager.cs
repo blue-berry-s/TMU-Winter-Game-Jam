@@ -25,7 +25,7 @@ public class CardsVisualManager : MonoBehaviour
     public void DrawCardAnimation(List<GameObject> handCardCount, int maxHandSize, SplineContainer splineContainer)
     {
         if (handCardCount.Count == 0) return;
-        float cardSpacing = 1f / maxHandSize;
+        float cardSpacing = 2f / maxHandSize;
         float firstCardPosition = 0.5f - (handCardCount.Count - 1) * cardSpacing / 2;
         Spline spline = splineContainer.Spline;
         for (int i = 0; i < handCardCount.Count; i++)

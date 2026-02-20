@@ -6,11 +6,14 @@ TagManager:
   tags:
   - GameLogic
   - PlayerDeck
+  - BlackJackManagers
+  - BodyPart
+  - Inventory
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Environment
   - Water
   - UI
   - 
