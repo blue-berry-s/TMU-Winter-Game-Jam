@@ -45,6 +45,7 @@ public class CardManager : MonoBehaviour
             spadesDatas.Add(temp4[i]);
         }
         spadesDatas = spadesDatas.OrderBy(c => c.SecondValue).ToList();
+
     }
 
     public void setUpDeck() {

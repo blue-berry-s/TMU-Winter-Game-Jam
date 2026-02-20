@@ -52,9 +52,9 @@ public class HealEffect : ShopItem
         int maxHealth = healthManager.getMaxHealth(); // should be 30
 
         // Prevent divide by zero
-        if (money <= 0f)
+        if (money <= 10f)
         {
-            amount = 0;
+            amount = 10;
         }
         else
         {
