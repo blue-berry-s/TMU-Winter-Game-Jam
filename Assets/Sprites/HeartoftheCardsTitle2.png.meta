@@ -1,0 +1,507 @@
+fileFormatVersion: 2
+guid: adc05b97fc4151440bc5b89ac8546ca0
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5156344588552090808
+    second: HeartoftheCardsTitle2_0
+  - first:
+      213: -2869170604613904648
+    second: HeartoftheCardsTitle2_1
+  - first:
+      213: -6256970927569994994
+    second: HeartoftheCardsTitle2_2
+  - first:
+      213: 8816800720185283397
+    second: HeartoftheCardsTitle2_3
+  - first:
+      213: 8552119570460824461
+    second: HeartoftheCardsTitle2_4
+  - first:
+      213: -8324505503332602026
+    second: HeartoftheCardsTitle2_5
+  - first:
+      213: 7357944461386751090
+    second: HeartoftheCardsTitle2_6
+  - first:
+      213: -1490899623768952888
+    second: HeartoftheCardsTitle2_7
+  - first:
+      213: 8146727229391890336
+    second: HeartoftheCardsTitle2_8
+  - first:
+      213: -2030224774469647929
+    second: HeartoftheCardsTitle2_9
+  - first:
+      213: 6218665267378118076
+    second: HeartoftheCardsTitle2_10
+  - first:
+      213: -7323910186576921760
+    second: HeartoftheCardsTitle2_11
+  - first:
+      213: -6319328541925051234
+    second: HeartoftheCardsTitle2_12
+  - first:
+      213: 5081254200010472400
+    second: HeartoftheCardsTitle2_13
+  - first:
+      213: -6900978628571272279
+    second: HeartoftheCardsTitle2_14
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: HeartoftheCardsTitle2_0
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 617
+        width: 284
+        height: 490
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b4b72475140f8740800000000000000
+      internalID: 5156344588552090808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeartoftheCardsTitle2_1
+      rect:
+        serializedVersion: 2
+        x: 780
+        y: 617
+        width: 220
+        height: 352
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f6deff5988ae28d0800000000000000
+      internalID: -2869170604613904648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeartoftheCardsTitle2_2
+      rect:
+        serializedVersion: 2
+        x: 1018
+        y: 617
+        width: 205
+        height: 352
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e0b7e3c9716ca29a0800000000000000
+      internalID: -6256970927569994994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeartoftheCardsTitle2_3
+      rect:
+        serializedVersion: 2
+        x: 1245
+        y: 617
+        width: 220
+        height: 352
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5435d06aa819b5a70800000000000000
+      internalID: 8816800720185283397
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeartoftheCardsTitle2_4
+      rect:
+        serializedVersion: 2
+        x: 1302
+        y: 329
+        width: 194
+        height: 307
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d83dbf1307b3fa670800000000000000
+      internalID: 8552119570460824461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeartoftheCardsTitle2_5
+      rect:
+        serializedVersion: 2
+        x: 1458
+        y: 617
+        width: 214
+        height: 349
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65f631f895a697c80800000000000000
+      internalID: -8324505503332602026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeartoftheCardsTitle2_6
+      rect:
+        serializedVersion: 2
+        x: 1643
+        y: 548
+        width: 487
+        height: 534
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27c920ae08bac1660800000000000000
+      internalID: 7357944461386751090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeartoftheCardsTitle2_7
+      rect:
+        serializedVersion: 2
+        x: 418
+        y: 329
+        width: 133
+        height: 222
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8cfec79f0b24f4be0800000000000000
+      internalID: -1490899623768952888
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeartoftheCardsTitle2_8
+      rect:
+        serializedVersion: 2
+        x: 555
+        y: 329
+        width: 125
+        height: 222
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a7e7ed704dfe0170800000000000000
+      internalID: 8146727229391890336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeartoftheCardsTitle2_9
+      rect:
+        serializedVersion: 2
+        x: 807
+        y: 329
+        width: 215
+        height: 220
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c10a8ff25133d3e0800000000000000
+      internalID: -2030224774469647929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeartoftheCardsTitle2_10
+      rect:
+        serializedVersion: 2
+        x: 1026
+        y: 329
+        width: 142
+        height: 222
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cbdd12fdc132d4650800000000000000
+      internalID: 6218665267378118076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeartoftheCardsTitle2_11
+      rect:
+        serializedVersion: 2
+        x: 1496
+        y: 329
+        width: 133
+        height: 222
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 06bb7323d7e3c5a90800000000000000
+      internalID: -7323910186576921760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeartoftheCardsTitle2_12
+      rect:
+        serializedVersion: 2
+        x: 1633
+        y: 329
+        width: 143
+        height: 222
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e94f19f1c2c3d48a0800000000000000
+      internalID: -6319328541925051234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeartoftheCardsTitle2_13
+      rect:
+        serializedVersion: 2
+        x: 1778
+        y: 329
+        width: 142
+        height: 222
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0dbf515f5cd348640800000000000000
+      internalID: 5081254200010472400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeartoftheCardsTitle2_14
+      rect:
+        serializedVersion: 2
+        x: 1923
+        y: 329
+        width: 143
+        height: 222
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ab6271108cca30a0800000000000000
+      internalID: -6900978628571272279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      HeartoftheCardsTitle2_0: 5156344588552090808
+      HeartoftheCardsTitle2_1: -2869170604613904648
+      HeartoftheCardsTitle2_10: 6218665267378118076
+      HeartoftheCardsTitle2_11: -7323910186576921760
+      HeartoftheCardsTitle2_12: -6319328541925051234
+      HeartoftheCardsTitle2_13: 5081254200010472400
+      HeartoftheCardsTitle2_14: -6900978628571272279
+      HeartoftheCardsTitle2_2: -6256970927569994994
+      HeartoftheCardsTitle2_3: 8816800720185283397
+      HeartoftheCardsTitle2_4: 8552119570460824461
+      HeartoftheCardsTitle2_5: -8324505503332602026
+      HeartoftheCardsTitle2_6: 7357944461386751090
+      HeartoftheCardsTitle2_7: -1490899623768952888
+      HeartoftheCardsTitle2_8: 8146727229391890336
+      HeartoftheCardsTitle2_9: -2030224774469647929
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

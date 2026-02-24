@@ -59,12 +59,13 @@ public class CardView : MonoBehaviour, IPointerClickHandler
 
         float elapsed = 0f;
         Vector3 originalScale = transform.localScale;
+        float originalX = originalScale.x;
 
         // First half: shrink to 0
         while (elapsed < flipDuration / 2f)
         {
             elapsed += Time.deltaTime;
-            float scaleX = Mathf.Lerp(1f, 0f, elapsed / (flipDuration / 2f));
+            float scaleX = Mathf.Lerp(originalX, 0f, elapsed / (flipDuration / 2f));
             transform.localScale = new Vector3(scaleX, originalScale.y, originalScale.z);
             yield return null;
         }
@@ -88,7 +89,7 @@ public class CardView : MonoBehaviour, IPointerClickHandler
         while (elapsed < flipDuration / 2f)
         {
             elapsed += Time.deltaTime;
-            float scaleX = Mathf.Lerp(0f, 1f, elapsed / (flipDuration / 2f));
+            float scaleX = Mathf.Lerp(0f, originalX, elapsed / (flipDuration / 2f));
             transform.localScale = new Vector3(scaleX, originalScale.y, originalScale.z);
             yield return null;
         }

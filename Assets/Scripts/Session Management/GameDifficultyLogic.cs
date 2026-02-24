@@ -21,7 +21,7 @@ public class GameDifficultyLogic : MonoBehaviour
     private void Update()
     {
         
-        if (currentLevel > 1 && !(wonGame)) {
+        if (currentLevel > maxLevel && !(wonGame)) {
             Debug.Log("HERE");
             wonGame = true;
             winGame();

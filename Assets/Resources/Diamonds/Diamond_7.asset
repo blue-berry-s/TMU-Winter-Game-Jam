@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 831350e26f1ddfa43a8812af04dba6bf, type: 3}
   m_Name: Diamond_7
   m_EditorClassIdentifier: Assembly-CSharp::CardData
-  <Sprite>k__BackingField: {fileID: 797985950028089827, guid: 79952faee373d864d95c6a8dbdebd134, type: 3}
+  <Sprite>k__BackingField: {fileID: 21300000, guid: 8fc8465226a0c2044bbbbafc5353735f, type: 3}
   <Value>k__BackingField: 7
   <Suit>k__BackingField: Diamond
   <SecondValue>k__BackingField: 7

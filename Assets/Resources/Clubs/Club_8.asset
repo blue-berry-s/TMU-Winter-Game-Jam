@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 831350e26f1ddfa43a8812af04dba6bf, type: 3}
   m_Name: Club_8
   m_EditorClassIdentifier: Assembly-CSharp::CardData
-  <Sprite>k__BackingField: {fileID: -1789811908115254431, guid: 0db770cbac1fc5a49ba1c022728e1cca, type: 3}
+  <Sprite>k__BackingField: {fileID: 21300000, guid: e128e89e0ae141c4f9ee7cc9c7b27177, type: 3}
   <Value>k__BackingField: 8
   <Suit>k__BackingField: Club
   <SecondValue>k__BackingField: 8
