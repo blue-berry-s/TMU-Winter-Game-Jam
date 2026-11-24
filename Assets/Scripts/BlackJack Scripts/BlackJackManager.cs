@@ -224,6 +224,7 @@ public class BlackJackManager : MonoBehaviour
         }
         else
         {
+            
             while (dealerValue < 17 && !busted)
             {
                 DealerDrawCard(false);

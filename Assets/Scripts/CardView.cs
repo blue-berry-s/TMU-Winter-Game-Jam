@@ -56,6 +56,9 @@ public class CardView : MonoBehaviour, IPointerClickHandler
     private IEnumerator FlipRoutine()
     {
         isFlipping = true;
+        bool originalFlip = flipped;
+        flipped = !flipped;
+        
 
         float elapsed = 0f;
         Vector3 originalScale = transform.localScale;
@@ -72,7 +75,7 @@ public class CardView : MonoBehaviour, IPointerClickHandler
 
         FindFirstObjectByType<SoundManager>().playRandomizePitchSound("CardFlip");
         // Swap sprite at midpoint
-        if (flipped)
+        if (originalFlip)
         {
             cardImage.sprite = card.Sprite;
         }
@@ -80,9 +83,6 @@ public class CardView : MonoBehaviour, IPointerClickHandler
         {
             cardImage.sprite = BackSprite;
         }
-        flipped = !flipped;
-
-
         elapsed = 0f;
 
         // Second half: expand back out
